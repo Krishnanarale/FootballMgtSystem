@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.default')
 
 @section('content')
 <div class="container">
@@ -54,9 +54,4 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(() => {
-        $('body').addClass('bg-gradient-primary');
-    })
-</script>
 @endsection
