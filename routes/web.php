@@ -20,3 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Dev routes
+Route::get('/player/profile/{id}', 'Players\PlayersController@show');
+Route::post('/player/profile/update/{id}', 'Players\PlayersController@update');
