@@ -11,7 +11,7 @@
         @csrf
         <div class="col-md-12">
           <div class="offset-md-9 col-md-3">
-            <img class="img-profile rounded-circle" src="{{ asset('storage/'.$user->profile->avatar) }}" height="100px" width="100px" alt="{{ $user->first_name }}">
+            <img class="img-profile rounded-circle" src="{{ (Auth::user()->profile->avatar != '' ) ? '/storage/'. Auth::user()->profile->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" height="100px" width="100px" alt="{{ $user->first_name }}">
           </div>
         </div>
         <label><strong>PLAYER</strong></label>
@@ -52,9 +52,14 @@
           <div class="col-md-3">
             <div class="form-group">
               <label for="gender">Gender:</label>
-              <div class="form-control">
+              <div class="form-control @error('gender') is-invalid @enderror">
                 <label class="radio-inline"><input type="radio" name="gender" value="male" {{ ($user->profile->gender == 'male') ? "checked" : '' }}> Male</label>
                 <label class="radio-inline"><input type="radio" name="gender" value="female" {{ ($user->profile->gender == 'female') ? "checked" : '' }}> Female</label>
+                @error('gender')
+                <span class=" invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
               </div>
             </div>
           </div>

@@ -27,6 +27,8 @@ class PlayersController extends Controller
     public function index()
     {
         //
+        $players = Player::all();
+        return view('admin.players.index', compact('players', $players));
     }
 
     /**
@@ -60,7 +62,7 @@ class PlayersController extends Controller
     {
         $user = User::find($id);
         // dd($user);
-        return view('players.show')->with('user', $user);
+        return view('players.show', compact('user', $user));
     }
 
     /**

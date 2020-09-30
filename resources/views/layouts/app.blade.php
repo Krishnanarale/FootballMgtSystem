@@ -140,7 +140,7 @@
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
-                                    <img class="img-profile rounded-circle" src="/storage/{{ Auth::user()->profile->avatar }}">
+                                    <img class="img-profile rounded-circle" src="{{ (Auth::user()->profile->avatar != '' ) ? '/storage/'. Auth::user()->profile->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}">
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -205,11 +205,11 @@
     <script src="{{ asset('theam/js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <!-- <script src="{{ asset('theam/vendor/chart.js/Chart.min.js') }}"></script> -->
+    <script src="{{ asset('theam/vendor/chart.js/Chart.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <!-- <script src="{{ asset('theam/js/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('theam/js/demo/chart-pie-demo.js') }}"></script> -->
+    <script src="{{ asset('theam/js/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('theam/js/demo/chart-pie-demo.js') }}"></script>
 </body>
 
 </html>
