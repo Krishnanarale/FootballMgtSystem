@@ -2,17 +2,21 @@
 
 @section('content')
 <div class="container">
-    <!-- Area Chart -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Skill Evaluation Display</h6>
-        </div>
-        <div class="card-body">
-            <div class="chart-area">
-                <canvas id="myAreaChart"></canvas>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
+
+                    {{ __('You are logged in!') }}
+                </div>
             </div>
-            <hr>
-            <!-- Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file. -->
         </div>
     </div>
 </div>
