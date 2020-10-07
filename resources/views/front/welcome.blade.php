@@ -1,27 +1,56 @@
 @extends('layouts.front')
 
 @section('content')
+
+<style type="text/css">
+    .bg-black {
+        background: #000;
+    }
+
+    a.navbar-brand {
+        color: #000 !important;
+    }
+
+    nav.navbar.static-top {
+        z-index: 1;
+    }
+
+    header.header-banner {
+        margin-top: -60px;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+        color: #fff !important;
+    }
+</style>
+
 <!-- Masthead -->
-<header class="masthead text-white text-center">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-9 mx-auto">
-                <h1 class="mb-5">Build a landing page for your business or project and generate more leads!</h1>
+<header class="header-banner">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{{ asset('/frontTheam/img/banner-one.jpg')}}" alt="First slide">
             </div>
-            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                <form>
-                    <div class="form-row">
-                        <div class="col-12 col-md-9 mb-2 mb-md-0">
-                            <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
-                        </div>
-                        <div class="col-12 col-md-3">
-                            <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
-                        </div>
-                    </div>
-                </form>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{{ asset('/frontTheam/img/banner-two.jpg')}}" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{{ asset('/frontTheam/img/banner-three.jpg')}}" alt="Third slide">
             </div>
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 </header>
 
@@ -65,21 +94,21 @@
     <div class="container-fluid p-0">
         <div class="row no-gutters">
 
-            <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('frontTheam/img/bg-showcase-1.jpg');"></div>
+            <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('frontTheam/img/football1.jpg');"></div>
             <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                 <h2>Fully Responsive Design</h2>
                 <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
             </div>
         </div>
         <div class="row no-gutters">
-            <div class="col-lg-6 text-white showcase-img" style="background-image: url('frontTheam/img/bg-showcase-2.jpg');"></div>
+            <div class="col-lg-6 text-white showcase-img" style="background-image: url('frontTheam/img/football2.jpg');"></div>
             <div class="col-lg-6 my-auto showcase-text">
                 <h2>Updated For Bootstrap 4</h2>
                 <p class="lead mb-0">Newly improved, and full of great utility classes, Bootstrap 4 is leading the way in mobile responsive web development! All of the themes on Start Bootstrap are now using Bootstrap 4!</p>
             </div>
         </div>
         <div class="row no-gutters">
-            <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('frontTheam/img/bg-showcase-3.jpg');"></div>
+            <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('frontTheam/img/football3.jpg');"></div>
             <div class="col-lg-6 order-lg-1 my-auto showcase-text">
                 <h2>Easy to Use &amp; Customize</h2>
                 <p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand some deeper customization options. Out of the box, just add your content and images, and your new landing page will be ready to go!</p>

@@ -27,6 +27,9 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('theam/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <!-- Datatable css -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+
     <!-- Custom styles for this page -->
     <link href="{{ asset('theam/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
@@ -69,8 +72,18 @@
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/admin/players') }}">
+                        <i class="fas fa-fw fa-users"></i>
+                        <span>Players</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/admin/users') }}">
+                        <i class="fas fa-fw fa-user"></i>
+                        <span>Users</span></a>
+                </li>
+                <!-- <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-cog"></i>
+                        <i class="fas fa-fw fa-users"></i>
                         <span>Players</span>
                     </a>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -78,7 +91,7 @@
                             <a class="collapse-item" href="{{ url('admin/players') }}">Players</a>
                         </div>
                     </div>
-                </li>
+                </li> -->
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <!-- <li class="nav-item">
@@ -175,7 +188,7 @@
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2020</span>
+                            <span>Copyright &copy; {{ config('app.name', 'Laravel') }} 2020</span>
                         </div>
                     </div>
                 </footer>
@@ -195,6 +208,10 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('theam/js/sb-admin-2.min.js') }}"></script>
+
+    <!-- Datatable js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 
 
     <!-- Page level plugins -->
