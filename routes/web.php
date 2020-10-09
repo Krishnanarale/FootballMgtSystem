@@ -45,8 +45,9 @@ Route::middleware(['auth'])->group(function () {
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/home', 'HomeController@handleAdmin')->name('admin.route'); // Admin Dashboard
 
-    Route::get('/players', 'Players\PlayersController@index'); // Player listing
-    Route::get('/player/{id}/edit', 'Players\PlayersController@edit'); // Player Edit form
+    Route::get('/players', 'Admin\PlayersController@index'); // Player listing
+    Route::get('/player/{id}/edit', 'Admin\PlayersController@edit'); // Player Edit form
+    Route::post('/player/{id}/update', 'Admin\PlayersController@update'); // Player update
 
     Route::get('/users', 'Admin\UsersController@index'); // Users listing
     Route::get('/user/{id}/edit', 'Admin\UsersController@edit'); // User Edit form

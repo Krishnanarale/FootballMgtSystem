@@ -26,6 +26,14 @@ class CreatePlayersTable extends Migration
             $table->string('guardian_name')->nullable();
             $table->string('guardian_phone')->nullable();
             $table->string('guardian_email')->nullable();
+            $table->string('contract_copy')->nullable();
+            $table->string('received_by_name')->nullable();
+            $table->string('received_by_date')->nullable();
+            $table->string('received_by_squad')->nullable();
+            $table->string('received_by_id')->nullable();
+            $table->string('received_by_register_number')->nullable();
+            $table->string('received_by_remark')->nullable();
+
             $table->timestamps();
 
             $table->index('user_id');

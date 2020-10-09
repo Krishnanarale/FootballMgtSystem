@@ -7,13 +7,8 @@
             <h6 class="m-0 font-weight-bold text-primary">Profile</h6>
         </div>
         <div class="card-body">
-            <form method="POST" enctype="multipart/form-data" action="/player/profile/update/{{ $user->id }}">
+            <form method="POST" enctype="multipart/form-data" action="/admin/player/{{ $user->id }}/update">
                 @csrf
-                <div class="col-md-12">
-                    <div class="offset-md-9 col-md-3">
-                        <img class="img-profile rounded-circle" src="{{ ($user->profile->avatar != '' ) ? '/storage/'. $user->profile->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" height="100px" width="100px" alt="{{ $user->first_name }}">
-                    </div>
-                </div>
                 <label><strong>PLAYER</strong></label>
                 <div class="row">
                     <div class="col-md-3">
@@ -50,6 +45,9 @@
                         </div>
                     </div>
                     <div class="col-md-3">
+                        <img class="img-profile rounded-circle" src="{{ ($user->profile->avatar != '' ) ? '/storage/'. $user->profile->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" height="100px" width="100px" alt="{{ $user->first_name }}">
+                    </div>
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label for="gender">Gender:</label>
                             <div class="form-control @error('gender') is-invalid @enderror">
@@ -63,8 +61,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="address">Address:</label>
@@ -88,12 +84,6 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="school_attended">School Attended:</label>
-                            <input type="text" class="form-control" id="school_attended" name="school_attended" value="{{ old('school_attended') ?? $user->profile->school_attended }}">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
                         <label for="avatar">Photo:</label>
                         <input type="file" class="form-control @error('avatar') is-invalid @enderror" id="avatar" name="avatar">
                         @error('avatar')
@@ -101,6 +91,20 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="school_attended">School Attended:</label>
+                            <input type="text" class="form-control" id="school_attended" name="school_attended" value="{{ old('school_attended') ?? $user->profile->school_attended }}">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        @if($user->profile->contract_copy)
+                        <div class="form-group">
+                            <label>Contract File:</label>
+                            <a class="form-control" href="{{ asset('/storage/'.$user->profile->contract_copy) }}" target="_blank"><i class="fas fa-fw fa-download"></i></a>
+                        </div>
+                        @endif
                     </div>
                 </div>
                 <hr>
@@ -136,7 +140,69 @@
                     </div>
                     <div class="col-md-3"></div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong><label>FOR OFFICE USE:</label></strong>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="received_by_name">Name:</label>
+                            <input type="text" class="form-control @error('received_by_name') is-invalid @enderror" id="received_by_name" name="received_by_name" value="{{ old('received_by_name') ?? $user->profile->received_by_name}}">
+                            @error('received_by_name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="received_by_date">Date:</label>
+                            <input type="date" class="form-control @error('received_by_date') is-invalid @enderror" id="received_by_date" name="received_by_date" value="{{ old('received_by_date') ?? $user->profile->received_by_date}}">
+                            @error('received_by_date')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="received_by_register_number">Register Number:</label>
+                            <input type="text" class="form-control @error('received_by_register_number') is-invalid @enderror" id="received_by_register_number" name="received_by_register_number" value="{{ old('received_by_register_number') ?? $user->profile->received_by_register_number}}">
+                            @error('received_by_register_number')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="received_by_squad">Squad:</label>
+                            <input type="text" class="form-control @error('received_by_squad') is-invalid @enderror" id="received_by_squad" name="received_by_squad" value="{{ old('received_by_squad') ?? $user->profile->received_by_squad}}">
+                            @error('received_by_squad')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="received_by_remark">Remark:</label>
+                            <textarea rows="2" class="form-control @error('received_by_remark') is-invalid @enderror" id="received_by_remark" name="received_by_remark">{{ old('received_by_remark') ?? $user->profile->received_by_remark}}</textarea>
+                            @error('received_by_remark')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+                <a href="/admin/players" class="btn btn-warning float-left">Back</a>
+                <button type="submit" class="btn btn-primary float-right">Submit</button>
             </form>
         </div>
     </div>

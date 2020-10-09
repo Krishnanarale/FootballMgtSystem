@@ -37,7 +37,7 @@
                         <!-- <td>{{ ($user->is_admin) ? "Admin" : "User" }}</td> -->
                         <td>
                             <a href="/admin/user/{{ $user->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
-                            <a href="#" onclick="confirmDelete({{ $user->id }})"><i class="fas fa-fw fa-trash"></i></a>
+                            <a href="#" onclick="confirmDelete('{{ $user->id }}')"><i class="fas fa-fw fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach

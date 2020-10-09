@@ -23,7 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = auth()->user()->profile->date_of_birth;
+        if ($user != "") {
+            return view('home');
+        } else {
+            return redirect('/player/profile/' . auth()->user()->id);
+        }
     }
 
     public function handleAdmin()

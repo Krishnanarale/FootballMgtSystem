@@ -36,7 +36,7 @@
                         <td>{{ $role->guard_name }}</td>
                         <td>
                             <a href="/admin/role/{{ $role->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
-                            <a href="#" onclick="confirmDelete({{ $role->id }})"><i class="fas fa-fw fa-trash"></i></a>
+                            <a href="#" onclick="confirmDelete('{{ $role->id }}')"><i class="fas fa-fw fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach

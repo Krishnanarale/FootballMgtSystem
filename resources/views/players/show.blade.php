@@ -9,11 +9,6 @@
     <div class="card-body">
       <form method="POST" enctype="multipart/form-data" action="/player/profile/update/{{ $user->id }}">
         @csrf
-        <div class="col-md-12">
-          <div class="offset-md-9 col-md-3">
-            <img class="img-profile rounded-circle" src="{{ (Auth::user()->profile->avatar != '' ) ? '/storage/'. Auth::user()->profile->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" height="100px" width="100px" alt="{{ $user->first_name }}">
-          </div>
-        </div>
         <label><strong>PLAYER</strong></label>
         <div class="row">
           <div class="col-md-3">
@@ -50,6 +45,13 @@
             </div>
           </div>
           <div class="col-md-3">
+            <div class="from-group">
+              <img class="img-profile rounded-circle" src="{{ (Auth::user()->profile->avatar != '' ) ? '/storage/'. Auth::user()->profile->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" height="100px" width="100px" alt="{{ $user->first_name }}">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
             <div class="form-group">
               <label for="gender">Gender:</label>
               <div class="form-control @error('gender') is-invalid @enderror">
@@ -63,8 +65,6 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
           <div class="col-md-3">
             <div class="form-group">
               <label for="address">Address:</label>
@@ -88,12 +88,6 @@
             </div>
           </div>
           <div class="col-md-3">
-            <div class="form-group">
-              <label for="school_attended">School Attended:</label>
-              <input type="text" class="form-control" id="school_attended" name="school_attended" value="{{ old('school_attended') ?? $user->profile->school_attended }}">
-            </div>
-          </div>
-          <div class="col-md-3">
             <label for="avatar">Photo:</label>
             <input type="file" class="form-control @error('avatar') is-invalid @enderror" id="avatar" name="avatar">
             @error('avatar')
@@ -101,6 +95,25 @@
               <strong>{{ $message }}</strong>
             </span>
             @enderror
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="school_attended">School Attended:</label>
+              <input type="text" class="form-control" id="school_attended" name="school_attended" value="{{ old('school_attended') ?? $user->profile->school_attended }}">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              @if($user->profile->contract_copy == "")
+              <label for="contract_copy">Contract Soft Copy:</label>
+              <input type="file" class="form-control @error('contract_copy') is-invalid @enderror" id="contract_copy" name="contract_copy">
+              @error('contract_copy')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+              @endif
+            </div>
           </div>
         </div>
         <hr>
@@ -136,7 +149,44 @@
           </div>
           <div class="col-md-3"></div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <hr>
+        <label><strong>FOR OFFICE USE</strong></label>
+        <div class="row">
+          <div class="col-md-12">
+            <label>Application Received By</label>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Name:</label>
+              <input type="text" class="form-control" value="{{ $user->profile->received_by_name}}" disabled>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Date:</label>
+              <input type="text" class="form-control" value="{{ $user->profile->received_by_date}}" disabled>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Registration Number:</label>
+              <input type="text" class="form-control" value="{{ $user->profile->received_by_register_number}}" disabled>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Squad:</label>
+              <input type="text" class="form-control" value="{{ $user->profile->received_by_squad}}" disabled>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Remark:</label>
+              <textarea rows="2" class="form-control" disabled>{{ $user->profile->received_by_remark}}</textarea>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary float-right">Submit</button>
       </form>
     </div>
   </div>

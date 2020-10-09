@@ -1,24 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Players;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\User;
 use App\Player;
+use App\User;
 
 class PlayersController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +16,9 @@ class PlayersController extends Controller
      */
     public function index()
     {
-        //        
+        //
+        $players = Player::all();
+        return view('admin.players.index', compact('players', $players));
     }
 
     /**
@@ -36,7 +28,7 @@ class PlayersController extends Controller
      */
     public function create()
     {
-        // 
+        //
     }
 
     /**
@@ -58,9 +50,7 @@ class PlayersController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        // dd($user);
-        return view('players.show', compact('user', $user));
+        //
     }
 
     /**
@@ -72,7 +62,8 @@ class PlayersController extends Controller
     public function edit($id)
     {
         //
-
+        $user = User::find($id);
+        return view('admin.players.edit', compact('user', $user));
     }
 
     /**
@@ -91,9 +82,13 @@ class PlayersController extends Controller
             'address' => 'required',
             'phone' => 'required|numeric',
             'avatar' => 'file|image',
-            'contract_copy' => 'file|image',
             'guardian_name' => 'required|max:255',
             'guardian_phone' => 'required|numeric',
+            'received_by_name' => 'required|string',
+            'received_by_date' => 'required',
+            'received_by_register_number' => 'required|numeric',
+            'received_by_squad' => 'required',
+            'received_by_remark' => 'required',
         ]);
         $data = $request->all();
         // moving file
@@ -102,15 +97,11 @@ class PlayersController extends Controller
         } else {
             unset($data['avatar']);
         }
-        if ($request->file('contract_copy') != '') {
-            $data['contract_copy'] = $request->file('contract_copy')->store('contracts', 'public');
-        } else {
-            unset($data['contract_copy']);
-        }
         unset($data['_token']);
+        $data['received_by_id'] = auth()->user()->id;
         $result = Player::where('user_id', $id)
             ->update($data);
-        return ($result == 1) ? redirect('/home') : "";
+        return ($result == 1) ? redirect('/admin/players') : "";
     }
 
     /**
