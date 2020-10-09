@@ -36,7 +36,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') ?? $user->email }}">
+                            <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') ?? $user->email }}" disabled>
                             @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -44,7 +44,36 @@
                             @enderror
                         </div>
                     </div>
-
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="is_admin">Type:</label>
+                            <select name="is_admin" class="form-control @error('is_admin') is-invalid @enderror" id="is_admin">
+                                <option value="">User</option>
+                                <option value="1" {{ ($user->is_admin == 1) ? "selected" : "" }}>Admin</option>
+                            </select>
+                            @error('is_admin')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="role">Role:</label>
+                            <select name="role" class="form-control @error('role') is-invalid @enderror" id="role" value="{{ $user->role }}">
+                                <option value="">Select</option>
+                                @foreach($roles as $role)
+                                <option value="{{ $role->id }}" {{ ($user->role_id == $role->id) ? "selected" : "" }}>{{ $role->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('role')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary float-right">Submit</button>
             </form>

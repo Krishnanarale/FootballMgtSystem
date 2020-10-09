@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
-class UsersController extends Controller
+class AccessesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class UsersController extends Controller
     public function index()
     {
         //
-        $users = User::all();
-        return view('admin.users.index', compact('users', $users));
+        $roles = Role::all();
+        return view('admin.accesses.index', compact('roles'));
     }
 
     /**
@@ -62,9 +62,14 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
-        $user = User::find($id);
-        $roles = Role::all();
-        return view('admin.users.edit', compact('user', 'roles'));
+        $role = Role::find($id);
+        $permissions = Permission::all();
+        $hasPermissions = $role->permissions()->get();
+        $check = [];
+        foreach ($hasPermissions as $hP) {
+            array_push($check, $hP->id);
+        }
+        return view('admin.accesses.edit', compact('role', 'permissions', 'check'));
     }
 
     /**
@@ -78,32 +83,16 @@ class UsersController extends Controller
     {
         //
         $validatedData = $request->validate([
-            'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
-            'is_admin' => ''
+            'permissions' => ''
         ]);
 
-        if ($request->role) {
-            $user = User::find($id);
-            try {
-                $user->assignRole($request->role);
-                $validatedData['role_id'] = $request->role;
-            } catch (\Throwable $th) {
-                throw $th;
-            }
+        $role = Role::find($id);
+        if (isset($validatedData['permissions'])) {
+            $role->syncPermissions($validatedData['permissions']);
         } else {
-            $user = User::find($id);
-            try {
-                $user->roles()->detach();
-                $user->forgetCachedPermissions();
-                $validatedData['role_id'] = null;
-            } catch (\Throwable $th) {
-                throw $th;
-            }
+            $role->syncPermissions(null);
         }
-
-        User::where('id', $id)->update($validatedData);
-        return redirect('admin/users');
+        return redirect('/admin/accesses');
     }
 
     /**
@@ -115,7 +104,5 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
-        User::destroy($id);
-        return redirect('admin/users');
     }
 }

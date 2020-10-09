@@ -78,14 +78,13 @@
                     </a>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
+                            <a class="collapse-item" href="{{ url('admin/roles') }}">Roles</a>
+                            <a class="collapse-item" href="{{ url('admin/permissions') }}">Permissions</a>
+                            <a class="collapse-item" href="{{ url('admin/accesses') }}">Access</a>
                             <a class="collapse-item" href="{{ url('admin/users') }}">Users</a>
                         </div>
                     </div>
-                    <!-- <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/admin/users') }}">
-                        <i class="fas fa-fw fa-user"></i>
-                        <span>Users</span></a>
-                </li> -->
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/admin/players') }}">
                         <i class="fas fa-fw fa-users"></i>

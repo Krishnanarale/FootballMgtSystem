@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
-class UsersController extends Controller
+class RolesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class UsersController extends Controller
     public function index()
     {
         //
-        $users = User::all();
-        return view('admin.users.index', compact('users', $users));
+        $roles = Role::all();
+        return view('admin.roles.index', compact('roles', $roles));
     }
 
     /**
@@ -29,6 +28,7 @@ class UsersController extends Controller
     public function create()
     {
         //
+        return view('admin.roles.create');
     }
 
     /**
@@ -40,6 +40,12 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'name' => 'required|unique:roles|max:255'
+        ]);
+
+        Role::create($validatedData);
+        return redirect('/admin/roles/');
     }
 
     /**
@@ -62,9 +68,8 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
-        $user = User::find($id);
-        $roles = Role::all();
-        return view('admin.users.edit', compact('user', 'roles'));
+        $role = Role::find($id);
+        return view('admin.roles.edit', compact('role'));
     }
 
     /**
@@ -78,32 +83,10 @@ class UsersController extends Controller
     {
         //
         $validatedData = $request->validate([
-            'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
-            'is_admin' => ''
+            'name' => 'required|unique:roles|max:255'
         ]);
-
-        if ($request->role) {
-            $user = User::find($id);
-            try {
-                $user->assignRole($request->role);
-                $validatedData['role_id'] = $request->role;
-            } catch (\Throwable $th) {
-                throw $th;
-            }
-        } else {
-            $user = User::find($id);
-            try {
-                $user->roles()->detach();
-                $user->forgetCachedPermissions();
-                $validatedData['role_id'] = null;
-            } catch (\Throwable $th) {
-                throw $th;
-            }
-        }
-
-        User::where('id', $id)->update($validatedData);
-        return redirect('admin/users');
+        Role::where('id', $id)->update($validatedData);
+        return redirect('/admin/roles/');
     }
 
     /**
@@ -115,7 +98,7 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
-        User::destroy($id);
-        return redirect('admin/users');
+        Role::destroy($id);
+        return redirect('/admin/roles/');
     }
 }
