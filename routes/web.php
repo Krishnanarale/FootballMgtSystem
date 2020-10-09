@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Players\PlayersController;
+use App\Player;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,16 +21,24 @@ Route::get('/', function () {
 }); // Welcom page/ ladning page
 
 Route::get('/players-list', function () {
-    return view('playersList');
+    $players = Player::all();
+    return view('players.players-list', compact('players'));
 }); // Players Listing with cards for front
 
-Route::get('/player', function () {
-    return view('player');
+Route::get('/players/{id}/show', function ($id) {
+    $player = Player::find($id);
+    return view('players.player', compact('player'));
+}); // Singal Player for front
+
+Route::get('/about-us', function () {
+    return view('about-us');
 }); // Players Listing with cards for front
 
-Route::get('/player-prifile', function () {
-    return view('profile');
+Route::get('/contact-us', function () {
+    return view('contact-us');
 }); // Players Listing with cards for front
+
+Route::get('/trainers/create', 'Trainers\TrainersController@create');
 
 Auth::routes(); // Auth routes
 

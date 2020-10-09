@@ -91,7 +91,7 @@
 
 <div class="content-wraper">
 
-    <section id="BreadcrumbNav" class="breadcrumb">
+    <!-- <section id="BreadcrumbNav" class="breadcrumb">
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -101,13 +101,14 @@
                 </ol>
             </nav>
         </div>
-    </section><!-- breadcrumb Nav -->
+    </section> -->
 
     <section id="PlayerInfo" class="player-info-content mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <div id="carouselExampleControls" class="carousel slide mb-5" data-ride="carousel">
+                    <img src="{{ ($player->avatar != '' ) ? '/storage/'. $player->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" alt="{{ $player->user->first_name }} {{ $player->user->last_name }}" width="500px">
+                    <!-- <div id="carouselExampleControls" class="carousel slide mb-5" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img class="d-block w-100" src="{{ asset('frontTheam/img/football1.jpg')}}" alt="First slide">
@@ -130,19 +131,19 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-sm-12 col-md-6">
                     <div class="PlayerInfoContent">
                         <div class="singleinfo-row mb-2">
-                            <div class="player-label float-left mr-5 w-15"><strong>Nationality:</strong></div>
-                            <div class="player-value">Liechtenstein</div>
+                            <div class="player-label float-left mr-5 w-15"><strong>Name:</strong></div>
+                            <div class="player-value">{{ $player->user->first_name }} {{ $player->user->last_name }}</div>
                         </div>
                         <div class="singleinfo-row mb-2">
-                            <div class="player-label float-left mr-5 w-15"><strong>Position:</strong></div>
-                            <div class="player-value">Defender</div>
+                            <div class="player-label float-left mr-5 w-15"><strong>Gender:</strong></div>
+                            <div class="player-value">{{$player->gender}}</div>
                         </div>
-                        <div class="singleinfo-row mb-2">
+                        <!-- <div class="singleinfo-row mb-2">
                             <div class="player-label float-left mr-5 w-15"><strong>Leagues:</strong></div>
                             <div class="player-value">NBA Finals, Secondary League</div>
                         </div>
@@ -153,13 +154,13 @@
                         <div class="singleinfo-row mb-2">
                             <div class="player-label w-100"><strong>Description:</strong></div>
                             <div class="player-value">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="PlayerBiog" class="player-biography mt-5">
+    <!-- <section id="PlayerBiog" class="player-biography mt-5">
         <div class="bg-dark-none">
             <div class="container">
                 <div class="full-description pt-5 pd-5">
@@ -176,9 +177,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section id="FinalTable" class="Final-Table mt-5">
+    <!-- <section id="FinalTable" class="Final-Table mt-5">
         <div class="container">
             <div class="NBAtable">
                 <h4 class="sp-table-caption mb-3">NBA Finals</h4>
@@ -238,7 +239,7 @@
                 </table>
             </div>
         </div>
-    </section>
+    </section> -->
 
 </div>
 

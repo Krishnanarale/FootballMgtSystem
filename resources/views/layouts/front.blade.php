@@ -38,7 +38,9 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li><a href="/players-list">Players</a></li>
-                    <li><a class="ml-4" href="/player">Singal Player</a></li>
+                    <li><a href="/trainers/create" class="ml-4">Trainer</a></li>
+                    <li><a class="ml-4" href="/about-us">About</a></li>
+                    <li><a class="ml-4" href="/contact-us">Contact</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -74,11 +76,11 @@
                 <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
                     <ul class="list-inline mb-2">
                         <li class="list-inline-item">
-                            <a href="#">About</a>
+                            <a href="/about-us">About</a>
                         </li>
                         <li class="list-inline-item">&sdot;</li>
                         <li class="list-inline-item">
-                            <a href="#">Contact</a>
+                            <a href="/contact-us">Contact</a>
                         </li>
                         <li class="list-inline-item">&sdot;</li>
                         <li class="list-inline-item">

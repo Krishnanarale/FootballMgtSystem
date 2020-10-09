@@ -12,7 +12,7 @@
     }
 
     nav.navbar.static-top {
-        z-index: 1;
+        z-index: 11;
     }
 
     header.header-banner {
