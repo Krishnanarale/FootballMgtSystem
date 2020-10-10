@@ -34,10 +34,10 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="{{ asset('/frontTheam/img/banner-one.jpg')}}" alt="First slide">
+                <img class="d-block w-100" src="https://i.pinimg.com/originals/35/ab/c5/35abc531feb94f545437080e8c606a6f.jpg" alt="First slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="{{ asset('/frontTheam/img/banner-two.jpg')}}" alt="Second slide">
+                <img class="d-block w-100" src="https://image.freepik.com/free-psd/soccer-club-training-camp-banner-template_23-2148406225.jpg" alt="Second slide">
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100" src="{{ asset('/frontTheam/img/banner-three.jpg')}}" alt="Third slide">

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $player->user->first_name }} {{ $player->user->last_name }}</title>
 
     <!-- Scripts -->
     <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
@@ -40,101 +40,6 @@
     <div id="app">
         <!-- Page Wrapper -->
         <div id="wrapper">
-
-            <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-                <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/admin/home') }}">
-                    <div class="sidebar-brand-icon rotate-n-15">
-                        <i class="fas fa-laugh-wink"></i>
-                    </div>
-                    <div class="sidebar-brand-text mx-3">{{ config('app.name', 'Laravel') }}</div>
-                </a>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0">
-
-                <!-- Nav Item - Dashboard -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('/admin/home') }}">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a>
-                </li>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-
-                <!-- Heading -->
-                <!-- <div class="sidebar-heading">
-                    Interface
-                </div> -->
-
-                <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-users"></i>
-                        <span>User Management</span>
-                    </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ url('admin/roles') }}">Roles</a>
-                            <a class="collapse-item" href="{{ url('admin/permissions') }}">Permissions</a>
-                            <a class="collapse-item" href="{{ url('admin/accesses') }}">Access</a>
-                            <a class="collapse-item" href="{{ url('admin/users') }}">Users</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/admin/players') }}">
-                        <i class="fas fa-fw fa-running"></i>
-                        <span>Players</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/admin/trainers') }}">
-                        <i class="fas fa-fw fa-futbol"></i>
-                        <span>Trainers</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/admin/contacts') }}">
-                        <i class="fas fa-fw fa-phone-alt"></i>
-                        <span>Contacted Us</span></a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-users"></i>
-                        <span>Players</span>
-                    </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ url('admin/players') }}">Players</a>
-                        </div>
-                    </div>
-                </li> -->
-
-                <!-- Nav Item - Pages Collapse Menu -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo1" aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Trainers</span>
-                    </a>
-                    <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{ url('admin/players') }}">Trainers</a>
-                        </div>
-                    </div>
-                </li> -->
-
-                <!-- Divider -->
-                <hr class="sidebar-divider d-none d-md-block">
-
-                <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline">
-                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                </div>
-
-            </ul>
-            <!-- End of Sidebar -->
 
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">
@@ -191,33 +96,58 @@
 
                     <!-- Begin Page Content -->
                     <div class="container-fluid">
-
-                        <!-- Content Row -->
-                        <main class="py-4">
-                            @yield('content')
-                        </main>
-
-                    </div>
-                    <!-- /.container-fluid -->
-
-                </div>
-                <!-- End of Main Content -->
-
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; {{ config('app.name', 'Laravel') }} 2020</span>
+                        <div class="col-md-4 offset-md-4">
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3 class="text-primary">Identity Card</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center mb-4"><img src="{{ ($player->avatar != '' ) ? '/storage/'. $player->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" height="100px" width="100px" alt="{{ $player->user->first_name }}"></div>
+                                            <div class="col-md-3 offset-md-3"><label>Name:</label></div>
+                                            <div class="col-md-3">{{ $player->user->first_name }} {{ $player->user->last_name }}</div>
+                                            <div class="col-md-3 offset-md-3"><label>Gender:</label></div>
+                                            <div class="col-md-3">{{ $player->gender }}</div>
+                                            <div class="col-md-3 offset-md-3"><label>Date Of Birth:</label></div>
+                                            <div class="col-md-3">{{ $player->date_of_birth }}</div>
+                                            <div class="col-md-3 offset-md-3"><label>Mobile:</label></div>
+                                            <div class="col-md-3">{{ $player->phone }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </footer>
-                <!-- End of Footer -->
+                    <script>
+                        $(document).ready(() => {
+
+                            window.print();
+                        })
+                    </script>
+                    </main>
+
+                </div>
+                <!-- /.container-fluid -->
 
             </div>
-            <!-- End of Content Wrapper -->
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <!-- <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; {{ config('app.name', 'Laravel') }} 2020</span>
+                    </div>
+                </div>
+            </footer> -->
+            <!-- End of Footer -->
 
         </div>
-        <!-- End of Page Wrapper -->
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
     </div>
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('theam/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -245,7 +175,7 @@
 
     <!-- Page level custom scripts -->
     <!-- <script src="{{ asset('theam/js/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('theam/js/demo/chart-pie-demo.js') }}"></script> -->
+<script src="{{ asset('theam/js/demo/chart-pie-demo.js') }}"></script> -->
 </body>
 
 </html>

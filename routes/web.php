@@ -30,13 +30,10 @@ Route::get('/players/{id}/show', function ($id) {
     return view('players.player', compact('player'));
 }); // Singal Player for front
 
-Route::get('/about-us', function () {
-    return view('about-us');
-}); // Players Listing with cards for front
+Route::get('/about-us', 'PagesController@about'); // about page
 
-Route::get('/contact-us', function () {
-    return view('contact-us');
-}); // Players Listing with cards for front
+Route::get('/contact-us', 'PagesController@contact'); // contact page
+Route::post('/contact-form', 'PagesController@contactForm'); // contact form
 
 Route::get('/trainers/create', 'Trainers\TrainersController@create');
 
@@ -55,6 +52,8 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/home', 'HomeController@handleAdmin')->name('admin.route'); // Admin Dashboard
 
     Route::get('/players', 'Admin\PlayersController@index'); // Player listing
+    Route::get('/player/{id}/show', 'Admin\PlayersController@show'); // Player Print form
+    Route::get('/player/{id}/identity-card', 'Admin\PlayersController@identityCard'); // Player Print identity card
     Route::get('/player/{id}/edit', 'Admin\PlayersController@edit'); // Player Edit form
     Route::post('/player/{id}/update', 'Admin\PlayersController@update'); // Player update
 
@@ -87,4 +86,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/accesses/{id}/edit', 'Admin\AccessesController@edit'); // Show form for edit accesses
     Route::post('/accesses/{id}', 'Admin\AccessesController@update'); // Update accesses
     // Route::get('/accesses/{id}/destroy', 'Admin\AccessesController@destroy'); // Update accesses
+
+    // Contacts Crud Route
+    Route::resource('contacts', Admin\ContactsController::class);
 });

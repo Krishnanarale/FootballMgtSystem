@@ -51,6 +51,21 @@ class PlayersController extends Controller
     public function show($id)
     {
         //
+        $player = Player::find($id);
+        return view('admin.players.show', compact('player'));
+    }
+
+    /**
+     * Print Identity Card specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function identityCard($id)
+    {
+        //
+        $player = Player::find($id);
+        return view('admin.players.identity-card', compact('player'));
     }
 
     /**

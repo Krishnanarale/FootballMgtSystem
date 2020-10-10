@@ -32,6 +32,7 @@
                 </thead>
                 <tbody>
                     @foreach($players as $player)
+                    @if($player->user->is_admin != 1)
                     <tr class="{{ $player->user->id }}">
                         <td>{{ $player->user->first_name }} {{ $player->user->last_name }}</td>
                         <td>{{ $player->email }}</td>
@@ -39,8 +40,11 @@
                         <td>{{ $player->date_of_birth }}</td>
                         <td>
                             <a href="/admin/player/{{ $player->user->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
+                            <a href="/admin/player/{{ $player->user->id }}/show"><i class="fas fa-fw fa-print"></i></a>
+                            <a href="/admin/player/{{ $player->user->id }}/identity-card"><i class="fas fa-fw fa-id-badge"></i></a>
                         </td>
                     </tr>
+                    @endif
                     @endforeach
                 </tbody>
             </table>

@@ -27,7 +27,7 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-white static-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ url('/') }}" style="color: black !important;">
                 {{ config('app.name', 'Laravel') }}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -91,7 +91,7 @@
                             <a href="#">Privacy Policy</a>
                         </li>
                     </ul>
-                    <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2020. All Rights Reserved.</p>
+                    <p class="text-muted small mb-4 mb-lg-0">&copy; {{config('app.name', 'Laravel')}} 2020. All Rights Reserved.</p>
                 </div>
                 <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
                     <ul class="list-inline mb-0">
