@@ -89,7 +89,4 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 
     // Contacts Crud Route
     Route::resource('contacts', Admin\ContactsController::class);
-
-    // Trainers Crud Route
-    Route::resource('trainers', Admin\TrainersController::class);
 });
