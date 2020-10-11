@@ -99,26 +99,27 @@
                         <div class="col-md-4 offset-md-4">
                             <div class="card">
                                 <div class="card-header text-center">
-                                    <h3 class="text-primary">Identity Card</h3>
+                                    <h4 class="text-primary">Pataakifc</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="row">
-                                            <div class="col-md-12 text-center mb-4"><img src="{{ ($player->avatar != '' ) ? '/storage/'. $player->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" height="100px" width="100px" alt="{{ $player->user->first_name }}"></div>
-                                            <div class="col-md-3 offset-md-3"><label>Name:</label></div>
-                                            <div class="col-md-3">{{ $player->user->first_name }} {{ $player->user->last_name }}</div>
-                                            <div class="col-md-3 offset-md-3"><label>Gender:</label></div>
-                                            <div class="col-md-3">{{ $player->gender }}</div>
-                                            <div class="col-md-3 offset-md-3"><label>Date Of Birth:</label></div>
-                                            <div class="col-md-3">{{ $player->date_of_birth }}</div>
-                                            <div class="col-md-3 offset-md-3"><label>Mobile:</label></div>
-                                            <div class="col-md-3">{{ $player->phone }}</div>
+                                        <div class="col-md-12 text-center mb-4"><img class="img-thumbnail rounded img-fluid" src="{{ ($player->avatar != '' ) ? '/storage/'. $player->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" height="150px" width="150px" alt="{{ $player->user->first_name }}"></div>
+                                        <div class="col-md-10 offset-md-1">
+                                            <ul style="list-style-type: none;">
+                                                <li>Name : {{ $player->user->first_name }} {{ $player->user->last_name }}</li>
+                                                <li>Gender : {{ ucfirst($player->gender) }}</li>
+                                                <li>DOB : {{ $player->date_of_birth }}</li>
+                                                <li>Mobile : {{ $player->phone }}</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- <div class="row">
+                        <a class="btn btn-warning btn-sm float-right">Back</a>
+                    </div> -->
                     <script>
                         $(document).ready(() => {
 

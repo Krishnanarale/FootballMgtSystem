@@ -191,4 +191,11 @@
     </div>
   </div>
 </div>
+<script>
+  $(document).ready(() => {
+    let dob = '{{ $user->profile->date_of_birth }}';
+    if (dob == '')
+      alert('First compelete your profile!');
+  })
+</script>
 @endsection
