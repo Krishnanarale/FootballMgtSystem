@@ -31,6 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @can('view_players')
                     @foreach($players as $player)
                     @if($player->user->is_admin != 1)
                     <tr class="{{ $player->user->id }}">
@@ -39,13 +40,20 @@
                         <td>{{ $player->phone }}</td>
                         <td>{{ $player->date_of_birth }}</td>
                         <td>
+                            @can('edit_player')
                             <a href="/admin/player/{{ $player->user->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
+                            @endcan
+                            @can('print_pdf')
                             <a href="/admin/player/{{ $player->user->id }}/show" target="_blank"><i class="fas fa-fw fa-print"></i></a>
+                            @endcan
+                            @can('print_identity_card')
                             <a href="/admin/player/{{ $player->user->id }}/identity-card" target="_blank"><i class="fas fa-fw fa-id-badge"></i></a>
+                            @endcan
                         </td>
                     </tr>
                     @endif
                     @endforeach
+                    @endcan
                 </tbody>
             </table>
         </div>

@@ -10,7 +10,6 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary float-left">Contacted Us</h6>
-        <!-- <a href="/admin/permission/create" class="btn btn-primary btn-sm float-right">New</a> -->
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -32,6 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @can('view_contacted_us')
                     @foreach($contacts as $contact)
                     <tr class="{{ $contact->id }}">
                         <td>{{ $contact->name }}</td>
@@ -43,6 +43,7 @@
                         </td>
                     </tr>
                     @endforeach
+                    @endcan
                 </tbody>
             </table>
         </div>

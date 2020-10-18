@@ -26,14 +26,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @can('view_access')
                     @foreach($roles as $role)
                     <tr class="{{ $role->id }}">
                         <td>{{ $role->name }}</td>
                         <td>
+                            @can('edit_access')
                             <a href="/admin/accesses/{{ $role->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
+                            @endcan
                         </td>
                     </tr>
                     @endforeach
+                    @endcan
                 </tbody>
             </table>
         </div>

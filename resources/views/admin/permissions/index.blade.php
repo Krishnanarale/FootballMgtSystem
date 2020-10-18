@@ -10,7 +10,9 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary float-left">Permissions</h6>
+        @can('create_permission')
         <a href="/admin/permission/create" class="btn btn-primary btn-sm float-right">New</a>
+        @endcan
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -28,16 +30,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @can('view_permissions')
                     @foreach($permissions as $permission)
                     <tr class="{{ $permission->id }}">
                         <td>{{ $permission->name }}</td>
                         <td>{{ $permission->guard_name }}</td>
                         <td>
+                            @can('edit_permission')
                             <a href="/admin/permission/{{ $permission->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
+                            @endcan
+                            @can('delete_permission')
                             <a href="#" onclick="confirmDelete('{{ $permission->id }}')"><i class="fas fa-fw fa-trash"></i></a>
+                            @endcan
                         </td>
                     </tr>
                     @endforeach
+                    @endcan
                 </tbody>
             </table>
         </div>

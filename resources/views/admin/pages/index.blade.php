@@ -10,7 +10,9 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary float-left">Pages</h6>
+        @can('create_page')
         <a href="/admin/pages/create" class="btn btn-primary btn-sm float-right">New</a>
+        @endcan
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -30,17 +32,23 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @can('view_pages')
                     @foreach($pages as $page)
                     <tr class="{{ $page->id }}">
                         <td>{{ $page->title }}</td>
                         <td>{{ $page->description }}</td>
                         <td>{{ $page->url }}</td>
                         <td>
+                            @can('edit_page')
                             <a href="/admin/pages/{{ $page->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
+                            @endcan
+                            @can('delete_page')
                             <a href="#" onclick="confirmDelete('{{ $page->id }}')"><i class="fas fa-fw fa-trash"></i></a>
+                            @endcan
                         </td>
                     </tr>
                     @endforeach
+                    @endcan
                 </tbody>
             </table>
         </div>

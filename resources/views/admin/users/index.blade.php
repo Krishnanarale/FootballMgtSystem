@@ -29,18 +29,23 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @can('view_users')
                     @foreach($users as $user)
                     <tr class="{{ $user->id }}">
                         <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                         <td>{{ $user->email }}</td>
                         <td><span class="badge badge-{{ ($user->is_admin) ? 'success' : 'secondary' }}">{{ ($user->is_admin) ? 'Admin' : 'User' }}</span></td>
-                        <!-- <td>{{ ($user->is_admin) ? "Admin" : "User" }}</td> -->
                         <td>
+                            @can('edit_user')
                             <a href="/admin/user/{{ $user->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
+                            @endcan
+                            @can('delete_user')
                             <a href="#" onclick="confirmDelete('{{ $user->id }}')"><i class="fas fa-fw fa-trash"></i></a>
+                            @endcan
                         </td>
                     </tr>
                     @endforeach
+                    @endcan
                 </tbody>
             </table>
         </div>

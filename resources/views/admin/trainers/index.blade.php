@@ -10,7 +10,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary float-left">Trainers</h6>
-        @can('Role Create')
+        @can('create_trainer')
         <a href="/admin/role/create" class="btn btn-primary btn-sm float-right">New</a>
         @endcan
     </div>
@@ -30,6 +30,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @can('view_trainers')
                     @if(!empty($roles))
                     @foreach($roles as $role)
                     <tr class="{{ $role->id }}">
@@ -42,6 +43,7 @@
                     </tr>
                     @endforeach
                     @endif
+                    @endcan
                 </tbody>
             </table>
         </div>

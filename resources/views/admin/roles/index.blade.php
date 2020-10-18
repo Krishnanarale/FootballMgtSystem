@@ -10,7 +10,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary float-left">Roles</h6>
-        @can('Role Create')
+        @can('create_role')
         <a href="/admin/role/create" class="btn btn-primary btn-sm float-right">New</a>
         @endcan
     </div>
@@ -30,16 +30,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @can('view_roles')
                     @foreach($roles as $role)
                     <tr class="{{ $role->id }}">
                         <td>{{ $role->name }}</td>
                         <td>{{ $role->guard_name }}</td>
                         <td>
+                            @can('edit_role')
                             <a href="/admin/role/{{ $role->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
+                            @endcan
+                            @can('delete_role')
                             <a href="#" onclick="confirmDelete('{{ $role->id }}')"><i class="fas fa-fw fa-trash"></i></a>
+                            @endcan
                         </td>
                     </tr>
                     @endforeach
+                    @endcan
                 </tbody>
             </table>
         </div>
