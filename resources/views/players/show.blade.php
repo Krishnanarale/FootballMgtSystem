@@ -104,6 +104,38 @@
           </div>
           <div class="col-md-3">
             <div class="form-group">
+              <label for="position_id">Position:</label>
+              <select class="form-control @error('position_id') is-invalid @enderror" name="position_id" id="position_id">
+                <option value="">Select</option>
+                @if($positions)
+                @foreach($positions as $position)
+                <option value="{{ $position->id }}" {{ ($user->profile->position_id == $position->id) ? 'selected' : ''}}>{{ $position->name }}</option>
+                @endforeach
+                @endif
+              </select>
+              @error('position_id')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="foot">Prefered Foot:</label>
+              <div class="form-control @error('foot') is-invalid @enderror">
+                <label class="radio-inline"><input type="radio" name="foot" value="left" {{ ($user->profile->foot == 'left') ? "checked" : '' }}> Left</label>
+                <label class="radio-inline"><input type="radio" name="foot" value="right" {{ ($user->profile->foot == 'right') ? "checked" : '' }}> Right</label>
+                @error('foot')
+                <span class=" invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
               @if($user->profile->contract_copy == "")
               <label for="contract_copy">Contract Soft Copy:</label>
               <input type="file" class="form-control @error('contract_copy') is-invalid @enderror" id="contract_copy" name="contract_copy">
@@ -121,7 +153,7 @@
         <div class="row">
           <div class="col-md-3">
             <div class="form-group">
-              <label for="guardian_name">Name:</label>
+              <label for="position">Name:</label>
               <input type="text" class="form-control @error('guardian_name') is-invalid @enderror" id="guardian_name" name="guardian_name" value="{{ old('guardian_name') ?? $user->profile->guardian_name }}">
               @error('guardian_name')
               <span class="invalid-feedback" role="alert">
@@ -174,10 +206,7 @@
             </div>
           </div>
           <div class="col-md-3">
-            <div class="form-group">
-              <label>Squad:</label>
-              <input type="text" class="form-control" value="{{ $user->profile->received_by_squad}}" disabled>
-            </div>
+            @include('partials.front.squadSelect')
           </div>
           <div class="col-md-3">
             <div class="form-group">

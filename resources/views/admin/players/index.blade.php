@@ -40,7 +40,7 @@
                         <td>{{ $player->date_of_birth }}</td>
                         <td>
                             <a href="/admin/player/{{ $player->user->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
-                            <a href="/admin/player/{{ $player->user->id }}/show"><i class="fas fa-fw fa-print"></i></a>
+                            <a href="/admin/player/{{ $player->user->id }}/show" target="_blank"><i class="fas fa-fw fa-print"></i></a>
                             <a href="/admin/player/{{ $player->user->id }}/identity-card" target="_blank"><i class="fas fa-fw fa-id-badge"></i></a>
                         </td>
                     </tr>

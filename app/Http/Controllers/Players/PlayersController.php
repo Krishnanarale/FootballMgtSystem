@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Players;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\User;
+use App\Squad;
 use App\Player;
+use App\Position;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PlayersController extends Controller
 {
@@ -59,8 +61,9 @@ class PlayersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        // dd($user);
-        return view('players.show', compact('user', $user));
+        $positions = Position::all();
+        $squads = Squad::all();
+        return view('players.show', compact('user', 'positions', 'squads'));
     }
 
     /**
@@ -90,8 +93,9 @@ class PlayersController extends Controller
             'gender' => 'required',
             'address' => 'required',
             'phone' => 'required|numeric',
-            'avatar' => 'file|image',
-            'contract_copy' => 'file|image',
+            'avatar' => 'image',
+            'foot' => 'required',
+            'contract_copy' => 'file',
             'guardian_name' => 'required|max:255',
             'guardian_phone' => 'required|numeric',
         ]);

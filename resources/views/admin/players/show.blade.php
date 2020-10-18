@@ -102,7 +102,8 @@
                             <div class="container">
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Form</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary float-left">Form</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary float-right">Register Date - {{ date('d-m-Y', strtotime($player->user->created_at)) }}</h6>
                                     </div>
                                     <div class="card-body">
                                         <form method="POST" enctype="multipart/form-data" action="#">
@@ -187,6 +188,38 @@
                                                         <input type="text" class="form-control" id="school_attended" name="school_attended" value="{{ old('school_attended') ?? $player->school_attended }}">
                                                     </div>
                                                 </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="position_id">Position:</label>
+                                                        <select class="form-control @error('position_id') is-invalid @enderror" name="position_id" id="position_id">
+                                                            <option value="">Select</option>
+                                                            @if($positions)
+                                                            @foreach($positions as $position)
+                                                            <option value="{{ $position->id }}" {{ ($player->position_id == $position->id) ? 'selected' : ''}}>{{ $position->name }}</option>
+                                                            @endforeach
+                                                            @endif
+                                                        </select>
+                                                        @error('position_id')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="foot">Prefered Foot:</label>
+                                                        <div class="form-control @error('foot') is-invalid @enderror">
+                                                            <label class="radio-inline"><input type="radio" name="foot" value="left" {{ ($player->foot == 'left') ? "checked" : '' }}> Left</label>
+                                                            <label class="radio-inline"><input type="radio" name="foot" value="right" {{ ($player->foot == 'right') ? "checked" : '' }}> Right</label>
+                                                            @error('foot')
+                                                            <span class=" invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <hr>
                                             <label><strong>PARENT / GUARDIAN INFO</strong></label>
@@ -262,7 +295,14 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="received_by_squad">Squad:</label>
-                                                        <input type="text" class="form-control @error('received_by_squad') is-invalid @enderror" id="received_by_squad" name="received_by_squad" value="{{ old('received_by_squad') ?? $player->received_by_squad}}">
+                                                        <select name="received_by_squad" id="received_by_squad" class="form-control @error('received_by_squad') is-invalid @enderror">
+                                                            <option value="">Select</option>
+                                                            @if($squads)
+                                                            @foreach($squads as $squad)
+                                                            <option value="{{ $squad->id }}" {{ ($player->received_by_squad == $squad->id) ? 'selected' : ''}}>{{ $squad->name }}</option>
+                                                            @endforeach
+                                                            @endif
+                                                        </select>
                                                         @error('received_by_squad')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -270,26 +310,14 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="received_by_remark">Remark:</label>
-                                                        <textarea rows="2" class="form-control @error('received_by_remark') is-invalid @enderror" id="received_by_remark" name="received_by_remark">{{ old('received_by_remark') ?? $player->received_by_remark}}</textarea>
-                                                        @error('received_by_remark')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <label><strong>TERMS AND CONDITIONS</strong></label>
-                                            <ol>
-                                                <li>The club is not responsible for any injuries on the player during international matches.</li>
-                                                <li>By signing the above the parent / guardian confirms that the player has no known physical / mental condition preventing him / her participating in the above sport including physical fitness.</li>
-                                                <li>In the event that the player get injured during official club duty be it a competitive match or a training session, Pataaki will take care of the medicals.</li>
-                                            </ol>
-                                            <!-- <a href="/admin/players" class="btn btn-warning float-left">Back</a>
+                                                <hr>
+                                                <label><strong>TERMS AND CONDITIONS</strong></label>
+                                                <ol>
+                                                    <li>The club is not responsible for any injuries on the player during international matches.</li>
+                                                    <li>By signing the above the parent / guardian confirms that the player has no known physical / mental condition preventing him / her participating in the above sport including physical fitness.</li>
+                                                    <li>In the event that the player get injured during official club duty be it a competitive match or a training session, Pataaki will take care of the medicals.</li>
+                                                </ol>
+                                                <!-- <a href="/admin/players" class="btn btn-warning float-left">Back</a>
                 <button type="submit" class="btn btn-primary float-right">Submit</button> -->
                                         </form>
                                     </div>

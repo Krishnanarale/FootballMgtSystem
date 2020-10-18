@@ -16,6 +16,7 @@ class CreatePlayersTable extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('position_id')->nullable();
             $table->string('date_of_birth')->nullable();
             $table->string('email');
             $table->string('gender')->nullable();
@@ -23,6 +24,7 @@ class CreatePlayersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('school_attended')->nullable();
             $table->string('avatar')->nullable();
+            $table->string('foot')->nullable();
             $table->string('guardian_name')->nullable();
             $table->string('guardian_phone')->nullable();
             $table->string('guardian_email')->nullable();

@@ -106,6 +106,38 @@
                         </div>
                         @endif
                     </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="position_id">Position:</label>
+                            <select class="form-control @error('position_id') is-invalid @enderror" name="position_id" id="position_id">
+                                <option value="">Select</option>
+                                @if($positions)
+                                @foreach($positions as $position)
+                                <option value="{{ $position->id }}" {{ ($user->profile->position_id == $position->id) ? 'selected' : ''}}>{{ $position->name }}</option>
+                                @endforeach
+                                @endif
+                            </select>
+                            @error('position_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="foot">Prefered Foot:</label>
+                            <div class="form-control @error('foot') is-invalid @enderror">
+                                <label class="radio-inline"><input type="radio" name="foot" value="left" {{ ($user->profile->foot == 'left') ? "checked" : '' }}> Left</label>
+                                <label class="radio-inline"><input type="radio" name="foot" value="right" {{ ($user->profile->foot == 'right') ? "checked" : '' }}> Right</label>
+                                @error('foot')
+                                <span class=" invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <hr>
                 <label><strong>PARENT / GUARDIAN INFO</strong></label>
@@ -181,7 +213,14 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="received_by_squad">Squad:</label>
-                            <input type="text" class="form-control @error('received_by_squad') is-invalid @enderror" id="received_by_squad" name="received_by_squad" value="{{ old('received_by_squad') ?? $user->profile->received_by_squad}}">
+                            <select name="received_by_squad" id="received_by_squad" class="form-control @error('received_by_squad') is-invalid @enderror">
+                                <option value="">Select</option>
+                                @if($squads)
+                                @foreach($squads as $squad)
+                                <option value="{{ $squad->id }}" {{ ($user->profile->received_by_squad == $squad->id) ? 'selected' : ''}}>{{ $squad->name }}</option>
+                                @endforeach
+                                @endif
+                            </select>
                             @error('received_by_squad')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

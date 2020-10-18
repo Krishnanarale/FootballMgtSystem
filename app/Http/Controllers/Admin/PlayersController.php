@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Player;
+use App\Position;
+use App\Squad;
 use App\User;
 
 class PlayersController extends Controller
@@ -52,7 +54,9 @@ class PlayersController extends Controller
     {
         //
         $player = Player::find($id);
-        return view('admin.players.show', compact('player'));
+        $positions = Position::all();
+        $squads = Squad::all();
+        return view('admin.players.show', compact('player', 'positions', 'squads'));
     }
 
     /**
@@ -78,7 +82,9 @@ class PlayersController extends Controller
     {
         //
         $user = User::find($id);
-        return view('admin.players.edit', compact('user', $user));
+        $positions = Position::all();
+        $squads = Squad::all();
+        return view('admin.players.edit', compact('user', 'positions', 'squads'));
     }
 
     /**
