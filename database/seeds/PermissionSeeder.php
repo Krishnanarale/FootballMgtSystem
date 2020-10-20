@@ -32,6 +32,7 @@ class PermissionSeeder extends Seeder
             ['name' => 'delete_player'],
             ['name' => 'print_pdf'],
             ['name' => 'print_identity_card'],
+            ['name' => 'give_ratings'],
             ['name' => 'create_trainer'],
             ['name' => 'view_trainers'],
             ['name' => 'edit_trainer'],

@@ -94,4 +94,6 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 
     // Trainers Crud Route
     Route::resource('trainers', Admin\TrainersController::class);
+    // Ratings Crud Route
+    Route::resource('ratings', Admin\RatingController::class);
 });

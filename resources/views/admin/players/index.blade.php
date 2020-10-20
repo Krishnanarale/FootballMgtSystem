@@ -49,6 +49,9 @@
                             @can('print_identity_card')
                             <a href="/admin/player/{{ $player->user->id }}/identity-card" target="_blank"><i class="fas fa-fw fa-id-badge"></i></a>
                             @endcan
+                            @can('give_ratings')
+                            <a href="/admin/ratings/{{ $player->user->id }}/edit"><i class="fas fa-fw fa-chart-line"></i></a>
+                            @endcan
                         </td>
                     </tr>
                     @endif

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
+use App\Player;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,6 +36,9 @@ class HomeController extends Controller
 
     public function handleAdmin()
     {
-        return view('admin.adminHome');
+        $users = User::all();
+        $players = Player::all();
+        $contacts = Contact::all();
+        return view('admin.adminHome', compact('users', 'players', 'contacts'));
     }
 }
