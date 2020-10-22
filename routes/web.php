@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Players\PlayersController;
 use App\Player;
+use App\Position;
+use App\ScoreText;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,12 +24,15 @@ Route::get('/', function () {
 
 Route::get('/players-list', function () {
     $players = Player::all();
-    return view('players.players-list', compact('players'));
+    $positions = Position::all();
+    return view('players.players-list', compact('players', 'positions'));
 }); // Players Listing with cards for front
 
 Route::get('/players/{id}/show', function ($id) {
     $player = Player::find($id);
-    return view('players.player', compact('player'));
+    $position = Position::find($player->position_id);
+    $scoreTexts = ScoreText::all();
+    return view('players.player', compact('player', 'position', 'scoreTexts'));
 }); // Singal Player for front
 
 Route::get('/about-us', 'PagesController@about'); // about page

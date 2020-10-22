@@ -102,8 +102,8 @@
                             <li class="m-4"><strong>Name : {{ $player->user->first_name }} {{ $player->user->last_name }}</strong></li>
                             <li class="m-4"><strong>Gender : {{ ucfirst($player->gender) }}</strong></li>
                             <li class="m-4"><strong>DOB : {{ $player->date_of_birth }}</strong></li>
-                            <li class="m-4"><strong>Phone : {{ $player->phone }}</strong></li>
-                            <li class="m-4"><strong>Address : {{ $player->address }}</strong></li>
+                            <li class="m-4"><strong>Position : {{ $position->name }}</strong></li>
+                            <li class="m-4"><strong>Prefered Foot : {{ ucfirst($player->foot) }}</strong></li>
                         </ul>
                     </div>
                 </div>
@@ -115,10 +115,75 @@
             <div class="container">
                 <div class="full-description pt-5 pd-5">
                     <div class="headDescription mb-3">
-                        <h3>BIOGRAPHY</h3>
+                        <h3>EVALUATION</h3>
                     </div>
                     <div class="DescriptionContent">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        <table class="table table-bordered table-condensed text-white">
+                            <tbody>
+                                <tr>
+                                    <th>Skills</th>
+                                    <th>Score</th>
+                                    <th>Skills</th>
+                                    <th>Score</th>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4">Passing Skills</td>
+                                </tr>
+                                <tr>
+                                    <td>Inside of foot on ground</td>
+                                    @foreach($scoreTexts as $scoreText)
+                                    @if($player->user->rating->passing_inside_of_foot_on_ground == $scoreText->id)
+                                    <td>{{$scoreText->name}}</td>
+                                    @endif
+                                    @endforeach
+                                    <td>Outside of foot on ground</td>
+                                    @foreach($scoreTexts as $scoreText)
+                                    @if($player->user->rating->passing_outside_of_foot_on_ground == $scoreText->id)
+                                    <td>{{$scoreText->name}}</td>
+                                    @endif
+                                    @endforeach
+                                </tr>
+                                <tr>
+                                    <td>Laces (Instep)</td>
+                                    @foreach($scoreTexts as $scoreText)
+                                    @if($player->user->rating->passing_laces_instep == $scoreText->id)
+                                    <td>{{$scoreText->name}}</td>
+                                    @endif
+                                    @endforeach
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">Receving Skills</td>
+                                </tr>
+                                <tr>
+                                    <td>Inside of foot</td>
+                                    @foreach($scoreTexts as $scoreText)
+                                    @if($player->user->rating->receving_inside_of_foot == $scoreText->id)
+                                    <td>{{$scoreText->name}}</td>
+                                    @endif
+                                    @endforeach
+                                    <td>Outside of foot</td>
+                                    @foreach($scoreTexts as $scoreText)
+                                    @if($player->user->rating->receving_outside_of_foot == $scoreText->id)
+                                    <td>{{$scoreText->name}}</td>
+                                    @endif
+                                    @endforeach
+                                </tr>
+                                <tr>
+                                    <td>Laces (Instep)</td>
+                                    @foreach($scoreTexts as $scoreText)
+                                    @if($player->user->rating->receving_laces_instep == $scoreText->id)
+                                    <td>{{$scoreText->name}}</td>
+                                    @endif
+                                    @endforeach
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

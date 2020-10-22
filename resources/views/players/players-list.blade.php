@@ -169,19 +169,6 @@
     }
 </style>
 
-<!-- player Goalkeepers start -->
-
-<!-- <section id="card-team-nav" class="nav tab-nav mt-5">
-    <div class="container">
-        <ul>
-            <li><a href="#Goalkeepers.">Goalkeepers</a></li>
-            <li><a href="#Defenders">Defenders</a></li>
-            <li><a href="#Midfielders">Midfielders</a></li>
-            <li><a href="#CoachingStaff">Coaching Staff</a></li>
-        </ul>
-    </div>
-</section> -->
-
 <section id="Goalkeepers" class="Card-List mt-5">
     <div class="container">
         <div class="row">
@@ -200,16 +187,12 @@
                     <div class="player-overlap w-100 position-absolute">
                         <div class="card-body-head w-100">
                             <h5 class="player-title"><b>{{ $player->user->first_name }} {{ $player->user->last_name }}</b></h5>
-                            <!-- <span class="player-info">Goalkeeper</span> -->
+                            @foreach($positions as $position)
+                            @if($player->position_id == $position->id)
+                            <span class="player-info">({{ $position->name }})</span>
+                            @endif
+                            @endforeach
                         </div>
-                        <!-- <hr>
-                        <div class="player-point w-100">
-                            <ul>
-                                <li class="">Barca Appearances<br /><span>8</span></li>
-                                <li class="">Barca Clean Sheets<br /><span>3</span></li>
-                                <li class="">Barca Saves<br /><span>9</span></li>
-                            </ul>
-                        </div> -->
                     </div>
                 </a>
             </div><!-- cardBox -->
