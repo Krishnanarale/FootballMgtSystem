@@ -94,7 +94,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <img src="{{ ($player->avatar != '' ) ? '/storage/'. $player->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" alt="{{ $player->user->first_name }} {{ $player->user->last_name }}" width="500px">
+                    <img class="img-rounded" src="{{ ($player->avatar != '' ) ? '/storage/'. $player->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" alt="{{ $player->user->first_name }} {{ $player->user->last_name }}" width="500px">
                 </div>
                 <div class="col-sm-12 col-md-6">
                     <div class="PlayerInfoContent">
@@ -102,7 +102,7 @@
                             <li class="m-4"><strong>Name : {{ $player->user->first_name }} {{ $player->user->last_name }}</strong></li>
                             <li class="m-4"><strong>Gender : {{ ucfirst($player->gender) }}</strong></li>
                             <li class="m-4"><strong>DOB : {{ $player->date_of_birth }}</strong></li>
-                            <li class="m-4"><strong>Position : {{ $position->name }}</strong></li>
+                            <li class="m-4"><strong>Position : {{ $position->name ?? '' }}</strong></li>
                             <li class="m-4"><strong>Prefered Foot : {{ ucfirst($player->foot) }}</strong></li>
                         </ul>
                     </div>
@@ -119,69 +119,31 @@
                     </div>
                     <div class="DescriptionContent">
                         <table class="table table-bordered table-condensed text-white">
-                            <tbody>
+                            <thead>
                                 <tr>
                                     <th>Skills</th>
                                     <th>Score</th>
-                                    <th>Skills</th>
-                                    <th>Score</th>
                                 </tr>
-                            </tbody>
+                            </thead>
                             <tbody>
-                                <tr>
-                                    <td colspan="4">Passing Skills</td>
+                                @foreach($activities as $activity)
+                                <tr data-toggle="collapse" data-target="#item-{{ $activity->id }}">
+                                    <td colspan="2"><strong class="text-primary">{{ $activity->name }} <i class="far fa-caret-square-down ml-2"></i> </strong></td>
+
                                 </tr>
-                                <tr>
-                                    <td>Inside of foot on ground</td>
-                                    @foreach($scoreTexts as $scoreText)
-                                    @if($player->user->rating->passing_inside_of_foot_on_ground == $scoreText->id)
-                                    <td>{{$scoreText->name}}</td>
-                                    @endif
-                                    @endforeach
-                                    <td>Outside of foot on ground</td>
-                                    @foreach($scoreTexts as $scoreText)
-                                    @if($player->user->rating->passing_outside_of_foot_on_ground == $scoreText->id)
-                                    <td>{{$scoreText->name}}</td>
-                                    @endif
-                                    @endforeach
+                                @foreach($activity->skill as $skill)
+                                <tr id="item-{{ $activity->id }}" class="collapse">
+                                    <td>{{ $skill->name }}</td>
+                                    <td>
+                                        @foreach($scoreTexts as $text)
+                                        @if($player->user->evaluation[$skill->id - 1]->score_text_id == $text->id)
+                                        {{$text->name}}
+                                        @endif
+                                        @endforeach
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>Laces (Instep)</td>
-                                    @foreach($scoreTexts as $scoreText)
-                                    @if($player->user->rating->passing_laces_instep == $scoreText->id)
-                                    <td>{{$scoreText->name}}</td>
-                                    @endif
-                                    @endforeach
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4">Receving Skills</td>
-                                </tr>
-                                <tr>
-                                    <td>Inside of foot</td>
-                                    @foreach($scoreTexts as $scoreText)
-                                    @if($player->user->rating->receving_inside_of_foot == $scoreText->id)
-                                    <td>{{$scoreText->name}}</td>
-                                    @endif
-                                    @endforeach
-                                    <td>Outside of foot</td>
-                                    @foreach($scoreTexts as $scoreText)
-                                    @if($player->user->rating->receving_outside_of_foot == $scoreText->id)
-                                    <td>{{$scoreText->name}}</td>
-                                    @endif
-                                    @endforeach
-                                </tr>
-                                <tr>
-                                    <td>Laces (Instep)</td>
-                                    @foreach($scoreTexts as $scoreText)
-                                    @if($player->user->rating->receving_laces_instep == $scoreText->id)
-                                    <td>{{$scoreText->name}}</td>
-                                    @endif
-                                    @endforeach
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                @endforeach
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

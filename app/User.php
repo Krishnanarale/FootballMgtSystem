@@ -47,10 +47,6 @@ class User extends Authenticatable
             $user->profile()->create([
                 'email' => $user->email,
             ]);
-
-            $user->rating()->create([
-                'comment' => ""
-            ]);
         });
     }
 
@@ -62,9 +58,8 @@ class User extends Authenticatable
         return $this->hasOne(Player::class);
     }
 
-    // Get rating of associated with the user
-    public function rating()
+    public function evaluation()
     {
-        return $this->hasOne(Rating::class);
+        return $this->hasMany(Evaluation::class);
     }
 }

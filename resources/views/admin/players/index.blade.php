@@ -50,7 +50,11 @@
                             <a href="/admin/player/{{ $player->user->id }}/identity-card" target="_blank"><i class="fas fa-fw fa-id-badge"></i></a>
                             @endcan
                             @can('give_ratings')
-                            <a href="/admin/ratings/{{ $player->user->id }}/edit"><i class="fas fa-fw fa-chart-line"></i></a>
+                            @if(empty($player->user->evaluation[0]->user_id))
+                            <a href="/admin/player/{{ $player->user->id }}/evaluations/create"><i class="fas fa-fw fa-chart-line"></i></a>
+                            @elseif(!empty($player->user->evaluation[0]->user_id))
+                            <a href="/admin/player/{{ $player->user->id }}/evaluations/edit"><i class="fas fa-fw fa-chart-line"></i></a>
+                            @endif
                             @endcan
                         </td>
                     </tr>

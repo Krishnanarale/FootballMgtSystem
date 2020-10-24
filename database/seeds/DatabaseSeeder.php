@@ -17,5 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PositionSeeder::class);
         $this->call(SquadSeeder::class);
         $this->call(ScoreTextSeeder::class);
+        $this->call(ActivitySeeder::class);
+        $this->call(SkillSeeder::class);
     }
 }

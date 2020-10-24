@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Players;
 
+use App\Activity;
 use App\User;
 use App\Squad;
 use App\Player;

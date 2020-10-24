@@ -1,11 +1,14 @@
 <?php
 
+use App\Activity;
 use App\Http\Controllers\Players\PlayersController;
+use App\Http\Middleware\Admin;
 use App\Player;
 use App\Position;
 use App\ScoreText;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Ui\Presets\React;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +34,9 @@ Route::get('/players-list', function () {
 Route::get('/players/{id}/show', function ($id) {
     $player = Player::find($id);
     $position = Position::find($player->position_id);
+    $activities = Activity::all();
     $scoreTexts = ScoreText::all();
-    return view('players.player', compact('player', 'position', 'scoreTexts'));
+    return view('players.player', compact('player', 'position', 'scoreTexts', 'activities'));
 }); // Singal Player for front
 
 Route::get('/about-us', 'PagesController@about'); // about page
@@ -99,6 +103,10 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 
     // Trainers Crud Route
     Route::resource('trainers', Admin\TrainersController::class);
-    // Ratings Crud Route
-    Route::resource('ratings', Admin\RatingController::class);
+
+    // Evaluation Routes
+    Route::get('/player/{user}/evaluations/create', 'Admin\EvaluationController@create');
+    Route::post('/player/{user}/evaluations', 'Admin\EvaluationController@store');
+    Route::get('/player/{user}/evaluations/edit', 'Admin\EvaluationController@edit');
+    Route::put('/player/{user}/evaluations/update', 'Admin\EvaluationController@update');
 });
