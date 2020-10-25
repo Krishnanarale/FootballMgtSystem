@@ -8,28 +8,7 @@
                 <div class="google-map m-4"><iframe frameborder="0" style="border:0; height:550px; width:500px" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJn6wOs6lZwokRLKy1iqRcoKw" allowfullscreen=""></iframe></div>
             </div>
             <div class="col-md-6">
-                <h2 class="pb-3 align-left mbr-fonts-style display-2">
-                    Pataaki Football Club
-                </h2>
-                <div>
-                    <div class="icon-block pb-3">
-                        <span class="icon-block__icon">
-                            <span class="mbri-letter mbr-iconfont" media-simple="true"></span>
-                        </span>
-                        <h4 class="icon-block__title align-left mbr-fonts-style display-5">
-                            Don't hesitate to contact us
-                        </h4>
-                    </div>
-                    <div class="icon-contacts pb-3">
-                        <h5 class="align-left mbr-fonts-style display-7">
-                            Feel free to contact us
-                        </h5>
-                        <p class="mbr-text align-left mbr-fonts-style display-7">
-                            Phone: +1 (0) 000 0000 001 <br>
-                            Email: youremail@mail.com
-                        </p>
-                    </div>
-                </div>
+                {!! $content->content !!}
                 <div data-form-type="formoid">
                     <div data-form-alert="" hidden="">
                         Thanks for filling out the form!

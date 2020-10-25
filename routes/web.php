@@ -1,14 +1,12 @@
 <?php
 
 use App\Activity;
-use App\Http\Controllers\Players\PlayersController;
 use App\Http\Middleware\Admin;
 use App\Player;
 use App\Position;
 use App\ScoreText;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Ui\Presets\React;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,17 +94,19 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/accesses/{id}', 'Admin\AccessesController@update'); // Update accesses
     // Route::get('/accesses/{id}/destroy', 'Admin\AccessesController@destroy'); // Update accesses
 
-    // Contacts Crud Route
-    Route::resource('contacts', Admin\ContactsController::class);
-    // Pages Crud Route
-    Route::resource('pages', Admin\PageController::class);
-
-    // Trainers Crud Route
-    Route::resource('trainers', Admin\TrainersController::class);
 
     // Evaluation Routes
     Route::get('/player/{user}/evaluations/create', 'Admin\EvaluationController@create');
     Route::post('/player/{user}/evaluations', 'Admin\EvaluationController@store');
     Route::get('/player/{user}/evaluations/edit', 'Admin\EvaluationController@edit');
     Route::put('/player/{user}/evaluations/update', 'Admin\EvaluationController@update');
+
+    // Contacts Crud Route
+    Route::resource('contacts', 'Admin\ContactsController');
+
+    // Pages Crud Route
+    Route::resource('pages', 'Admin\PageController');
+
+    // Trainers Crud Route
+    Route::resource('trainers', 'Admin\TrainersController');
 });

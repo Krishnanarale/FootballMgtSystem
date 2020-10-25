@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\Page;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -10,13 +11,15 @@ class PagesController extends Controller
     //
     public function about()
     {
-        return view('about-us');
+        $content = Page::where('url', 'about-us')->first();
+        return view('about-us', compact('content'));
     }
 
 
     public function contact()
     {
-        return view('contact-us');
+        $content = Page::where('url', 'contact-us')->first();
+        return view('contact-us', compact('content'));
     }
 
     public function contactForm(Request $request)

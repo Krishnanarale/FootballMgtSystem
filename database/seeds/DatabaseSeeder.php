@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ScoreTextSeeder::class);
         $this->call(ActivitySeeder::class);
         $this->call(SkillSeeder::class);
+        $this->call(PageSeeder::class);
     }
 }
