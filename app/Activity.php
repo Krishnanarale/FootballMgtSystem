@@ -9,7 +9,7 @@ class Activity extends Model
     //
     protected $guarded = [];
 
-    public function skill()
+    public function skills()
     {
         return $this->hasMany(Skill::class);
     }

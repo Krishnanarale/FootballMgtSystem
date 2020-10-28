@@ -37,7 +37,7 @@
                         <td><span class="badge badge-{{ ($user->is_admin) ? 'success' : 'secondary' }}">{{ ($user->is_admin) ? 'Admin' : 'User' }}</span></td>
                         <td>
                             @can('edit_user')
-                            <a href="/admin/user/{{ $user->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
+                            <a href="/admin/users/{{ $user->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
                             @endcan
                             @can('delete_user')
                             <a href="#" onclick="confirmDelete('{{ $user->id }}')"><i class="fas fa-fw fa-trash"></i></a>
@@ -81,7 +81,16 @@
     function confirmDelete(id) {
         event.preventDefault();
         if (confirm("Are you sure to Delete?")) {
-            window.location = `/admin/user/${id}/destroy`;
+            $.ajax({
+                url: `/admin/users/${id}`,
+                type: 'DELETE',
+                data: {
+                    "_token": "{{ csrf_token() }}"
+                },
+                success: function(res) {
+                    window.location.reload();
+                }
+            });
         }
         return false;
     }

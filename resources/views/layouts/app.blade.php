@@ -140,11 +140,11 @@
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
-                                    <img class="img-profile rounded-circle" src="{{ (Auth::user()->profile->avatar != '' ) ? '/storage/'. Auth::user()->profile->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}">
+                                    <img class="img-profile rounded-circle" src="{{ (Auth::user()->player->avatar != '' ) ? '/storage/'. Auth::user()->player->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}">
                                 </a>
                                 <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="/player/profile/{{Auth::user()->id}}">
+                                    <a class="dropdown-item" href="/players/{{Auth::user()->player->id}}/edit">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                         {{ __('Profile') }}
                                     </a>

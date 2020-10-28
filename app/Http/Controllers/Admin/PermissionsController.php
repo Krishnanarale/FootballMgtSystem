@@ -98,8 +98,6 @@ class PermissionsController extends Controller
      */
     public function destroy($id)
     {
-        //
         Permission::destroy($id);
-        return redirect('/admin/permissions/');
     }
 }

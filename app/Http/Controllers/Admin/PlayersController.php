@@ -8,13 +8,14 @@ use App\Player;
 use App\Position;
 use App\Squad;
 use App\User;
+use Illuminate\Http\Response;
 
 class PlayersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -26,7 +27,7 @@ class PlayersController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -37,7 +38,7 @@ class PlayersController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -47,13 +48,12 @@ class PlayersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Player $player
+     * @return Response
      */
-    public function show($id)
+    public function show(Player $player)
     {
         //
-        $player = Player::find($id);
         $positions = Position::all();
         $squads = Squad::all();
         return view('admin.players.show', compact('player', 'positions', 'squads'));
@@ -62,29 +62,25 @@ class PlayersController extends Controller
     /**
      * Print Identity Card specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Player $player
+     * @return Response
      */
-    public function identityCard($id)
+    public function identityCard(Player $player)
     {
-        //
-        $player = Player::find($id);
         return view('admin.players.identity-card', compact('player'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Player $player
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|Response|\Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Player $player)
     {
-        //
-        $user = User::find($id);
         $positions = Position::all();
         $squads = Squad::all();
-        return view('admin.players.edit', compact('user', 'positions', 'squads'));
+        return view('admin.players.edit', compact('player', 'positions', 'squads'));
     }
 
     /**
@@ -92,9 +88,9 @@ class PlayersController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Player $player)
     {
         //
         $validatedData = $request->validate([
@@ -120,8 +116,7 @@ class PlayersController extends Controller
         }
         unset($data['_token']);
         $data['received_by_id'] = auth()->user()->id;
-        $result = Player::where('user_id', $id)
-            ->update($data);
+        $result = Player::where('id', $player->id)->update($data);
         return ($result == 1) ? redirect('/admin/players') : "";
     }
 
@@ -129,7 +124,7 @@ class PlayersController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {

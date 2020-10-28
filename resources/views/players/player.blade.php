@@ -15,7 +15,7 @@
     }
 
     section#BreadcrumbNav {
-        background: url(/frontTheam/img/football1.jpg) no-repeat;
+        background: url('/frontTheam/img/football1.jpg') no-repeat;
         width: 100%;
         border-radius: 0;
         margin: 0;
@@ -63,7 +63,7 @@
     }
 
     section#PlayerBiog {
-        background: url(/frontTheam/img/player-bg.jpg) no-repeat;
+        background: url('/frontTheam/img/player-bg.jpg') no-repeat;
         width: 100%;
         border-radius: 0;
         margin: 0;
@@ -126,24 +126,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($activities as $activity)
-                                <tr data-toggle="collapse" data-target="#item-{{ $activity->id }}">
-                                    <td colspan="2"><strong class="text-primary">{{ $activity->name }} <i class="far fa-caret-square-down ml-2"></i> </strong></td>
+                                @if(count($player->evaluations) > 1)
+                                    @foreach($activities as $activity)
+                                        <tr data-toggle="collapse" data-target="#item-{{ $activity->id }}">
+                                            <td colspan="2"><strong class="text-primary">{{ $activity->name }} <i class="far fa-caret-square-down ml-2"></i> </strong></td>
 
-                                </tr>
-                                @foreach($activity->skill as $skill)
-                                <tr id="item-{{ $activity->id }}" class="collapse">
-                                    <td>{{ $skill->name }}</td>
-                                    <td>
-                                        @foreach($scoreTexts as $text)
-                                        @if($player->user->evaluation[$skill->id - 1]->score_text_id == $text->id)
-                                        {{$text->name}}
-                                        @endif
+                                        </tr>
+                                        @foreach($activity->skills as $skill)
+                                            <tr id="item-{{ $activity->id }}" class="collapse">
+                                                <td>{{ $skill->name }}</td>
+                                                <td>
+                                                    @foreach($scoreTexts as $text)
+                                                            @if($player->evaluations[$skill->id - 1]->score_text_id == $text->id)
+                                                                {{$text->name}}
+                                                            @endif
+                                                    @endforeach
+                                                </td>
+                                            </tr>
                                         @endforeach
-                                    </td>
-                                </tr>
-                                @endforeach
-                                @endforeach
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="2" class="text-center">{{"No Evaluation Available"}}</td>
+                                    </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>

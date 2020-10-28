@@ -9,13 +9,8 @@ class Evaluation extends Model
     //
     protected $guarded = [];
 
-    public function user()
+    public function player()
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function skill()
-    {
-        return $this->belongsTo(Skill::class);
+        return $this->belongsTo(Player::class);
     }
 }

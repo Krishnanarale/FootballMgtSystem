@@ -9,6 +9,7 @@
         <div class="card-body">
             <form method="POST" action="/admin/accesses/{{$role->id}}">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">

@@ -7,8 +7,9 @@
             <h6 class="m-0 font-weight-bold text-primary">Edit Role</h6>
         </div>
         <div class="card-body">
-            <form method="POST" enctype="multipart/form-data" action="/admin/role/{{$role->id}}/update">
+            <form method="POST" enctype="multipart/form-data" action="/admin/roles/{{$role->id}}">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">

@@ -21,27 +21,24 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('front.welcome');
-}); // Welcom page/ ladning page
+});
 
 Route::get('/players-list', function () {
     $players = Player::all();
     $positions = Position::all();
     return view('players.players-list', compact('players', 'positions'));
-}); // Players Listing with cards for front
+});
 
-Route::get('/players/{id}/show', function ($id) {
-    $player = Player::find($id);
+Route::get('/players/{player}/show', function (Player $player) {
     $position = Position::find($player->position_id);
     $activities = Activity::all();
     $scoreTexts = ScoreText::all();
     return view('players.player', compact('player', 'position', 'scoreTexts', 'activities'));
-}); // Singal Player for front
+});
 
 Route::get('/about-us', 'PagesController@about'); // about page
-
 Route::get('/contact-us', 'PagesController@contact'); // contact page
 Route::post('/contact-form', 'PagesController@contactForm'); // contact form
-
 Route::get('/trainers/create', 'Trainers\TrainersController@create');
 
 Auth::routes(); // Auth routes
@@ -50,63 +47,25 @@ Auth::routes(); // Auth routes
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home'); // Player dashboard
 
-    Route::get('/player/profile/{id}', 'Players\PlayersController@show'); // Show's profile form
-    Route::post('/player/profile/update/{id}', 'Players\PlayersController@update'); // update profile
+    Route::resource('players', 'Players\PlayersController');
 });
 
 // Admin Routes
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/home', 'HomeController@handleAdmin')->name('admin.route'); // Admin Dashboard
+    Route::get('/players/{player}/identity-card', 'Admin\PlayersController@identityCard'); // Player Print identity card
+    Route::put('/players/{player}/evaluations/update', 'Admin\EvaluationController@update');
+    Route::get('/players/{player}/evaluations/edit', 'Admin\EvaluationController@edit');
 
-    Route::get('/players', 'Admin\PlayersController@index'); // Player listing
-    Route::get('/player/{id}/show', 'Admin\PlayersController@show'); // Player Print form
-    Route::get('/player/{id}/identity-card', 'Admin\PlayersController@identityCard'); // Player Print identity card
-    Route::get('/player/{id}/edit', 'Admin\PlayersController@edit'); // Player Edit form
-    Route::post('/player/{id}/update', 'Admin\PlayersController@update'); // Player update
-
-    Route::get('/users', 'Admin\UsersController@index'); // Users listing
-    Route::get('/user/{id}/edit', 'Admin\UsersController@edit'); // User Edit form
-    Route::post('/user/{id}/update', 'Admin\UsersController@update'); // Update User
-    Route::get('/user/{id}/destroy', 'Admin\UsersController@destroy'); // Soft Deleting User
-
-    // Roles Crud Route
-    Route::get('/roles', 'Admin\RolesController@index'); // Show listing of roles
-    Route::get('/role/create', 'Admin\RolesController@create'); // Show form for create role
-    Route::post('/role/store', 'Admin\RolesController@store'); // Store role
-    Route::get('/role/{id}/edit', 'Admin\RolesController@edit'); // Show form for edit role
-    Route::post('/role/{id}/update', 'Admin\RolesController@update'); // Update role
-    Route::get('/role/{id}/destroy', 'Admin\RolesController@destroy'); // Update role
-
-    // Permission Crud Route
-    Route::get('/permissions', 'Admin\PermissionsController@index'); // Show listing of permissions
-    Route::get('/permission/create', 'Admin\PermissionsController@create'); // Show form for create permission
-    Route::post('/permission/store', 'Admin\PermissionsController@store'); // Store permission
-    Route::get('/permission/{id}/edit', 'Admin\PermissionsController@edit'); // Show form for edit permission
-    Route::post('/permission/{id}/update', 'Admin\PermissionsController@update'); // Update permission
-    Route::get('/permission/{id}/destroy', 'Admin\PermissionsController@destroy'); // Update permission
-
-    // Accesses Crud Route
-    // Route::resource('/accesses', Admin\AccessesController::class);
-    Route::get('/accesses', 'Admin\AccessesController@index'); // Show listing of accesses
-    // Route::get('/accesses/create', 'Admin\AccessesController@create'); // Show form for create accesses
-    // Route::post('/accesses/store', 'Admin\AccessesController@store'); // Store accesses
-    Route::get('/accesses/{id}/edit', 'Admin\AccessesController@edit'); // Show form for edit accesses
-    Route::post('/accesses/{id}', 'Admin\AccessesController@update'); // Update accesses
-    // Route::get('/accesses/{id}/destroy', 'Admin\AccessesController@destroy'); // Update accesses
-
-
-    // Evaluation Routes
-    Route::get('/player/{user}/evaluations/create', 'Admin\EvaluationController@create');
-    Route::post('/player/{user}/evaluations', 'Admin\EvaluationController@store');
-    Route::get('/player/{user}/evaluations/edit', 'Admin\EvaluationController@edit');
-    Route::put('/player/{user}/evaluations/update', 'Admin\EvaluationController@update');
-
-    // Contacts Crud Route
-    Route::resource('contacts', 'Admin\ContactsController');
-
-    // Pages Crud Route
-    Route::resource('pages', 'Admin\PageController');
-
-    // Trainers Crud Route
-    Route::resource('trainers', 'Admin\TrainersController');
+    Route::resources([
+        'users' => 'Admin\UsersController',
+        'players' => 'Admin\PlayersController',
+        'roles' => 'Admin\RolesController',
+        'permissions' => 'Admin\PermissionsController',
+        'accesses' => 'Admin\AccessesController',
+        'players.evaluations' => 'Admin\EvaluationController',
+        'contacts' => 'Admin\ContactsController',
+        'pages' => 'Admin\PageController',
+        'trainers' => 'Admin\TrainersController'
+    ]);
 });

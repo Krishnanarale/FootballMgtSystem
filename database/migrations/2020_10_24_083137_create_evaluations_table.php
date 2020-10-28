@@ -14,12 +14,12 @@ class CreateEvaluationsTable extends Migration
     public function up()
     {
         Schema::create('evaluations', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('player_id');
             $table->unsignedBigInteger('skill_id');
             $table->unsignedBigInteger('score_text_id');
             $table->timestamps();
 
-            $table->index('user_id');
+            $table->index('player_id');
         });
     }
 

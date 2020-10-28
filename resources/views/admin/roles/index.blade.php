@@ -11,7 +11,7 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary float-left">Roles</h6>
         @can('create_role')
-        <a href="/admin/role/create" class="btn btn-primary btn-sm float-right">New</a>
+        <a href="/admin/roles/create" class="btn btn-primary btn-sm float-right">New</a>
         @endcan
     </div>
     <div class="card-body">
@@ -37,7 +37,7 @@
                         <td>{{ $role->guard_name }}</td>
                         <td>
                             @can('edit_role')
-                            <a href="/admin/role/{{ $role->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
+                            <a href="/admin/roles/{{ $role->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
                             @endcan
                             @can('delete_role')
                             <a href="#" onclick="confirmDelete('{{ $role->id }}')"><i class="fas fa-fw fa-trash"></i></a>
@@ -81,7 +81,16 @@
     function confirmDelete(id) {
         event.preventDefault();
         if (confirm("Are you sure to Delete?")) {
-            window.location = `/admin/role/${id}/destroy`;
+            $.ajax({
+                url: `/admin/roles/${id}`,
+                type: 'DELETE',
+                data: {
+                    "_token": "{{ csrf_token() }}"
+                },
+                success: function(res) {
+                    window.location.reload();
+                }
+            });
         }
         return false;
     }

@@ -33,32 +33,30 @@
                 <tbody>
                     @can('view_players')
                     @foreach($players as $player)
-                    @if($player->user->is_admin != 1)
-                    <tr class="{{ $player->user->id }}">
+                    <tr class="{{ $player->id }}">
                         <td>{{ $player->user->first_name }} {{ $player->user->last_name }}</td>
                         <td>{{ $player->email }}</td>
                         <td>{{ $player->phone }}</td>
                         <td>{{ $player->date_of_birth }}</td>
                         <td>
                             @can('edit_player')
-                            <a href="/admin/player/{{ $player->user->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
+                            <a href="/admin/players/{{ $player->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
                             @endcan
                             @can('print_pdf')
-                            <a href="/admin/player/{{ $player->user->id }}/show" target="_blank"><i class="fas fa-fw fa-print"></i></a>
+                            <a href="/admin/players/{{ $player->id }}" target="_blank"><i class="fas fa-fw fa-print"></i></a>
                             @endcan
                             @can('print_identity_card')
-                            <a href="/admin/player/{{ $player->user->id }}/identity-card" target="_blank"><i class="fas fa-fw fa-id-badge"></i></a>
+                            <a href="/admin/players/{{ $player->id }}/identity-card" target="_blank"><i class="fas fa-fw fa-id-badge"></i></a>
                             @endcan
                             @can('give_ratings')
-                            @if(empty($player->user->evaluation[0]->user_id))
-                            <a href="/admin/player/{{ $player->user->id }}/evaluations/create"><i class="fas fa-fw fa-chart-line"></i></a>
-                            @elseif(!empty($player->user->evaluation[0]->user_id))
-                            <a href="/admin/player/{{ $player->user->id }}/evaluations/edit"><i class="fas fa-fw fa-chart-line"></i></a>
+                            @if(count($player->evaluations) == 0)
+                                <a href="/admin/players/{{ $player->id }}/evaluations/create"><i class="fas fa-fw fa-chart-line"></i></a>
+                            @else
+                                <a href="/admin/players/{{ $player->id }}/evaluations/edit"><i class="fas fa-fw fa-chart-line"></i></a>
                             @endif
                             @endcan
                         </td>
                     </tr>
-                    @endif
                     @endforeach
                     @endcan
                 </tbody>

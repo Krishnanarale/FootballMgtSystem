@@ -44,22 +44,16 @@ class User extends Authenticatable
         parent::boot();
 
         static::created(function ($user) {
-            $user->profile()->create([
-                'email' => $user->email,
-            ]);
+            if ($user->is_admin != 1)
+                $user->player()->create(['email' => $user->email,]);
         });
     }
 
     /**
      * Get the profile record associated with the user.
      */
-    public function profile()
+    public function player()
     {
         return $this->hasOne(Player::class);
-    }
-
-    public function evaluation()
-    {
-        return $this->hasMany(Evaluation::class);
     }
 }

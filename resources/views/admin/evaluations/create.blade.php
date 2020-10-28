@@ -4,11 +4,11 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Player Evaluation for = {{ $user->first_name }} {{ $user->last_name }}</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Player Evaluation for = {{ $player->user->first_name }} {{ $player->user->last_name }}</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <form method="POST" action="/admin/player/{{ $user->id }}/evaluations">
+            <form method="POST" action="/admin/players/{{ $player->id }}/evaluations">
                 @csrf
                 <table class="table table-bordered">
                     <thead>
@@ -22,7 +22,7 @@
                         <tr>
                             <td colspan="2"><strong class="text-primary">{{ $activity->name }}</strong></td>
                         </tr>
-                        @foreach($activity->skill as $skill)
+                        @foreach($activity->skills as $skill)
                         <tr>
                             <td>{{ $skill->name }}</td>
                             <td>

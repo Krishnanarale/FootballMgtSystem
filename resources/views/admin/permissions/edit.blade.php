@@ -7,8 +7,9 @@
             <h6 class="m-0 font-weight-bold text-primary">Edit Permission</h6>
         </div>
         <div class="card-body">
-            <form method="POST" enctype="multipart/form-data" action="/admin/permission/{{$permission->id}}/update">
+            <form method="POST" enctype="multipart/form-data" action="/admin/permissions/{{$permission->id}}">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">

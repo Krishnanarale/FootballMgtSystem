@@ -177,27 +177,29 @@
             </div>
         </div>
         <div class="row">
-            @foreach($players as $player)
-            @if($player->user->is_admin != 1)
-            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 cardBox">
-                <a href="/players/{{ $player->user_id }}/show" class="card position-relative">
-                    <div class="player-img">
-                        <img class="rounded-0 img-fluid" src="{{ ($player->avatar != '' ) ? '/storage/'. $player->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" alt="Card image cap">
-                    </div>
-                    <div class="player-overlap w-100 position-absolute">
-                        <div class="card-body-head w-100">
-                            <h5 class="player-title"><b>{{ $player->user->first_name }} {{ $player->user->last_name }}</b></h5>
-                            @foreach($positions as $position)
-                            @if($player->position_id == $position->id)
-                            <span class="player-info">({{ $position->name }})</span>
-                            @endif
-                            @endforeach
-                        </div>
-                    </div>
-                </a>
-            </div><!-- cardBox -->
-            @endif
-            @endforeach
+            @forelse($players as $player)
+                    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 cardBox">
+                        <a href="/players/{{ $player->id }}/show" class="card position-relative">
+                            <div class="player-img">
+                                <img class="rounded-0 img-fluid" src="{{ ($player->avatar != '' ) ? '/storage/'. $player->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" alt="Card image cap">
+                            </div>
+                            <div class="player-overlap w-100 position-absolute">
+                                <div class="card-body-head w-100">
+                                    <h5 class="player-title"><b>{{ $player->user->first_name }} {{ $player->user->last_name }}</b></h5>
+                                    @foreach($positions as $position)
+                                        @if($player->position_id == $position->id)
+                                            <span class="player-info">({{ $position->name }})</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </a>
+                    </div><!-- cardBox -->
+            @empty
+                <div class="alert alert-success col-md-12 text-center" role="alert">
+                    {{"No Players Available"}}
+                </div>
+            @endforelse
         </div>
     </div>
 </section>

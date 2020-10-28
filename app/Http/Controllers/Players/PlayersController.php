@@ -29,7 +29,7 @@ class PlayersController extends Controller
      */
     public function index()
     {
-        //       
+        //
     }
 
     /**
@@ -39,7 +39,7 @@ class PlayersController extends Controller
      */
     public function create()
     {
-        // 
+        //
     }
 
     /**
@@ -56,39 +56,36 @@ class PlayersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Player $player
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Player $player)
     {
-        $user = User::find($id);
-        $positions = Position::all();
-        $squads = Squad::all();
-        return view('players.show', compact('user', 'positions', 'squads'));
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Player $player
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Player $player)
     {
-        //
-
+        $positions = Position::all();
+        $squads = Squad::all();
+        return view('players.edit', compact('player', 'positions', 'squads'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param Player $player
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Player $player)
     {
-        //
         $validatedData = $request->validate([
             'date_of_birth' => 'required|date',
             'gender' => 'required',
@@ -113,7 +110,8 @@ class PlayersController extends Controller
             unset($data['contract_copy']);
         }
         unset($data['_token']);
-        $result = Player::where('user_id', $id)
+        unset($data['_method']);
+        $result = Player::where('id', $player->id)
             ->update($data);
         return ($result == 1) ? redirect('/home') : "";
     }

@@ -7,7 +7,7 @@
             <h6 class="m-0 font-weight-bold text-primary">Create Role</h6>
         </div>
         <div class="card-body">
-            <form method="POST" enctype="multipart/form-data" action="/admin/role/store">
+            <form method="POST" enctype="multipart/form-data" action="/admin/roles  ">
                 @csrf
                 <div class="row">
                     <div class="col-md-3">

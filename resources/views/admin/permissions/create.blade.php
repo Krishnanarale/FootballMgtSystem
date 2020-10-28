@@ -7,7 +7,7 @@
             <h6 class="m-0 font-weight-bold text-primary">Create Permission</h6>
         </div>
         <div class="card-body">
-            <form method="POST" enctype="multipart/form-data" action="/admin/permission/store">
+            <form method="POST" enctype="multipart/form-data" action="/admin/permissions">
                 @csrf
                 <div class="row">
                     <div class="col-md-3">

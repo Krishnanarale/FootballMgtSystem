@@ -99,6 +99,5 @@ class RolesController extends Controller
     {
         //
         Role::destroy($id);
-        return redirect('/admin/roles/');
     }
 }

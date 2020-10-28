@@ -4,11 +4,11 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Player Evaluation for = {{ $user->first_name }} {{ $user->last_name }}</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Player Evaluation for = {{ $player->user->first_name }} {{ $player->user->last_name }}</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <form method="POST" action="/admin/player/{{ $user->id }}/evaluations/update">
+            <form method="POST" action="/admin/players/{{ $player->id }}/evaluations/update">
                 @csrf
                 @method('PUT')
                 <table class="table table-bordered">
@@ -23,12 +23,12 @@
                         <tr>
                             <td colspan="2"><strong class="text-primary">{{ $activity->name }}</strong></td>
                         </tr>
-                        @foreach($activity->skill as $key => $skill)
+                        @foreach($activity->skills as $key => $skill)
                         <tr>
                             <td>{{ $skill->name }}</td>
                             <td>
                                 @foreach($scoreTexts as $text)
-                                <label class="radio-inline"><input type="radio" name="skills[{{ $skill->id }}]" value="{{ $text->id }}" {{ ($user->evaluation[$skill->id - 1]->score_text_id == $text->id) ? 'checked' : ''}}> {{ $text->name }} </label>
+                                <label class="radio-inline"><input type="radio" name="skills[{{ $skill->id }}]" value="{{ $text->id }}" {{ ($player->evaluations[$skill->id - 1]->score_text_id == $text->id) ? 'checked' : ''}}> {{ $text->name }} </label>
                                 @endforeach
                             </td>
                         </tr>

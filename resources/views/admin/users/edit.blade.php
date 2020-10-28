@@ -7,8 +7,9 @@
             <h6 class="m-0 font-weight-bold text-primary">User</h6>
         </div>
         <div class="card-body">
-            <form method="POST" enctype="multipart/form-data" action="/admin/user/{{ $user->id }}/update">
+            <form method="POST" enctype="multipart/form-data" action="/admin/users/{{ $user->id }}">
                 @csrf
+                @method('PUT')
                 <label><strong>User</strong></label>
                 <div class="row">
                     <div class="col-md-3">

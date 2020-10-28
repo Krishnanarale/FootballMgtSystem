@@ -11,7 +11,7 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary float-left">Permissions</h6>
         @can('create_permission')
-        <a href="/admin/permission/create" class="btn btn-primary btn-sm float-right">New</a>
+        <a href="/admin/permissions/create" class="btn btn-primary btn-sm float-right">New</a>
         @endcan
     </div>
     <div class="card-body">
@@ -37,7 +37,7 @@
                         <td>{{ $permission->guard_name }}</td>
                         <td>
                             @can('edit_permission')
-                            <a href="/admin/permission/{{ $permission->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
+                            <a href="/admin/permissions/{{ $permission->id }}/edit"><i class="fas fa-fw fa-edit"></i></a>
                             @endcan
                             @can('delete_permission')
                             <a href="#" onclick="confirmDelete('{{ $permission->id }}')"><i class="fas fa-fw fa-trash"></i></a>
@@ -81,7 +81,16 @@
     function confirmDelete(id) {
         event.preventDefault();
         if (confirm("Are you sure to Delete?")) {
-            window.location = `/admin/permission/${id}/destroy`;
+            $.ajax({
+                url: `/admin/permissions/${id}`,
+                type: 'DELETE',
+                data: {
+                    "_token": "{{ csrf_token() }}"
+                },
+                success: function(res) {
+                    window.location.reload();
+                }
+            });
         }
         return false;
     }

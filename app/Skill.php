@@ -13,9 +13,4 @@ class Skill extends Model
     {
         return $this->belongsTo(Activity::class);
     }
-
-    public function evaluation()
-    {
-        return $this->hasMany(Evaluation::class);
-    }
 }

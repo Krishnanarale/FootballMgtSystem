@@ -10,7 +10,6 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary float-left">Access</h6>
-        <!-- <a href="/admin/role/create" class="btn btn-primary btn-sm float-right">New</a> -->
     </div>
     <div class="card-body">
         <div class="table-responsive">
