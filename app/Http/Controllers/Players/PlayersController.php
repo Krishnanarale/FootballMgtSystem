@@ -113,7 +113,7 @@ class PlayersController extends Controller
         unset($data['_method']);
         $result = Player::where('id', $player->id)
             ->update($data);
-        return ($result == 1) ? redirect('/home') : "";
+        return redirect()->back()->with('status', 'Profile updated!');;
     }
 
     /**
