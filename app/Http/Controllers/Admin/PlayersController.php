@@ -115,6 +115,7 @@ class PlayersController extends Controller
             unset($data['avatar']);
         }
         unset($data['_token']);
+        unset($data['_method']);
         $data['received_by_id'] = auth()->user()->id;
         $result = Player::where('id', $player->id)->update($data);
         return ($result == 1) ? redirect('/admin/players') : "";

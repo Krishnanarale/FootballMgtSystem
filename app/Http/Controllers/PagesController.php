@@ -22,6 +22,16 @@ class PagesController extends Controller
         return view('contact-us', compact('content'));
     }
 
+    public function termsConditions() {
+        $content = Page::where('url', 'terms-conditions')->first();
+        return view('terms-conditions', compact('content'));
+    }
+
+    public function privacyPolicy() {
+        $content = Page::where('url', 'privacy-policy')->first();
+        return view('privacy-policy', compact('content'));
+    }
+
     public function contactForm(Request $request)
     {
         $validatedData = $request->validate([

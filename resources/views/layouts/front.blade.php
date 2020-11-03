@@ -38,9 +38,11 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li><a href="/players-list">Players</a></li>
-                    <li><a href="/trainers/create" class="ml-4">Trainer</a></li>
+{{--                    <li><a href="/trainers/create" class="ml-4">Trainer</a></li>--}}
                     <li><a class="ml-4" href="/about-us">About</a></li>
                     <li><a class="ml-4" href="/contact-us">Contact</a></li>
+                    <li><a class="ml-4" href="/terms-conditions">Terms & Condtions</a></li>
+                    <li><a class="ml-4" href="/privacy-policy">Privecy & Policy</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

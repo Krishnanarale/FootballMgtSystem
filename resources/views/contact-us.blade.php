@@ -5,10 +5,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="google-map m-4"><iframe frameborder="0" style="border:0; height:550px; width:500px" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJn6wOs6lZwokRLKy1iqRcoKw" allowfullscreen=""></iframe></div>
+                <div class="google-map m-4"><iframe frameborder="0" style="border:0; height:550px; width:500px" src="https://maps.google.com/maps?q=No.21%2C%20Off%20Lake%20Road%2C%20Ibex%20Hill%2C%20Lusaka%2C%20Zambia&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen=""></iframe></div>
             </div>
             <div class="col-md-6">
-                {!! $content->content !!}
+                {!! $content->content ?? ''!!}
                 <div data-form-type="formoid">
                     <div data-form-alert="" hidden="">
                         Thanks for filling out the form!

@@ -39,7 +39,7 @@
 
 <div class="bg-light">
     <div class="container">
-        {!! $content->content !!}
+        {!! $content->content ?? '' !!}
     </div>
 </div>
 @endsection

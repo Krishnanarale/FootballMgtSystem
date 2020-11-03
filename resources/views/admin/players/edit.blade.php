@@ -7,8 +7,9 @@
             <h6 class="m-0 font-weight-bold text-primary">Profile</h6>
         </div>
         <div class="card-body">
-            <form method="POST" enctype="multipart/form-data" action="/admin/player/{{ $player->id }}/update">
+            <form method="POST" enctype="multipart/form-data" action="/admin/players/{{ $player->id }}">
                 @csrf
+                @method('PUT')
                 <label><strong>PLAYER</strong></label>
                 <div class="row">
                     <div class="col-md-3">

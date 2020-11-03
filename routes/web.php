@@ -39,6 +39,8 @@ Route::get('/players/{player}/show', function (Player $player) {
 Route::get('/about-us', 'PagesController@about'); // about page
 Route::get('/contact-us', 'PagesController@contact'); // contact page
 Route::post('/contact-form', 'PagesController@contactForm'); // contact form
+Route::get('/terms-conditions', 'PagesController@termsConditions'); // terms and condition page
+Route::get('/privacy-policy', 'PagesController@privacyPolicy'); // privacy policy page
 Route::get('/trainers/create', 'Trainers\TrainersController@create');
 
 Auth::routes(); // Auth routes
