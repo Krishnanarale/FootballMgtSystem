@@ -1,7 +1,6 @@
 <?php
 
 use App\Activity;
-use App\Http\Middleware\Admin;
 use App\Player;
 use App\Position;
 use App\ScoreText;
@@ -48,7 +47,6 @@ Auth::routes(); // Auth routes
 // User Routes
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home'); // Player dashboard
-
     Route::resource('players', 'Players\PlayersController');
 });
 

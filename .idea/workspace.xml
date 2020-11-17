@@ -24,14 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1e5c7f36-cc12-4d99-b07d-46d890c00f1f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/about-us.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/about-us.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/adminHome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/adminHome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/trainers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/trainers/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/front.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/front.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/players/player.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/player.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/players/players-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/players-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,6 +165,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -200,12 +194,22 @@
       <workItem from="1603946311130" duration="3917000" />
       <workItem from="1603954057250" duration="23000" />
       <workItem from="1604328390193" duration="1979000" />
-      <workItem from="1604382311620" duration="8290000" />
+      <workItem from="1604382311620" duration="11457000" />
+      <workItem from="1604410367461" duration="1039000" />
+      <workItem from="1604840921487" duration="1709000" />
+      <workItem from="1604842811508" duration="2046000" />
+      <workItem from="1604845926543" duration="876000" />
+      <workItem from="1604847000110" duration="2890000" />
+      <workItem from="1605446679466" duration="1595000" />
+      <workItem from="1605591696968" duration="809000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -232,9 +236,17 @@
       <screen x="0" y="0" width="1366" height="767" />
     </state>
     <state width="263" height="500" key="HiddenNamespacesPopup/0.0.1366.767@0.0.1366.767" timestamp="1603852861241" />
-    <state x="346" y="88" width="672" height="678" key="search.everywhere.popup" timestamp="1604390449092">
+    <state x="230" y="22" width="1022" height="735" key="SettingsEditor" timestamp="1604848986897">
       <screen x="0" y="0" width="1366" height="767" />
     </state>
-    <state x="346" y="88" width="672" height="678" key="search.everywhere.popup/0.0.1366.767@0.0.1366.767" timestamp="1604390449092" />
+    <state x="230" y="22" width="1022" height="735" key="SettingsEditor/0.0.1366.767@0.0.1366.767" timestamp="1604848986897" />
+    <state width="695" height="446" key="SwitcherDM" timestamp="1604849632887">
+      <screen x="0" y="0" width="1366" height="767" />
+    </state>
+    <state width="695" height="446" key="SwitcherDM/0.0.1366.767@0.0.1366.767" timestamp="1604849632887" />
+    <state x="346" y="88" width="672" height="678" key="search.everywhere.popup" timestamp="1605447448610">
+      <screen x="0" y="0" width="1366" height="767" />
+    </state>
+    <state x="346" y="88" width="672" height="678" key="search.everywhere.popup/0.0.1366.767@0.0.1366.767" timestamp="1605447448610" />
   </component>
 </project>
