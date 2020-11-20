@@ -41,6 +41,8 @@ Route::post('/contact-form', 'PagesController@contactForm'); // contact form
 Route::get('/terms-conditions', 'PagesController@termsConditions'); // terms and condition page
 Route::get('/privacy-policy', 'PagesController@privacyPolicy'); // privacy policy page
 Route::get('/trainers/create', 'Trainers\TrainersController@create');
+Route::get('/compare-player', 'Players\ComparePlayerController@index');
+Route::post('/compare-player', 'Players\ComparePlayerController@compare');
 
 Auth::routes(); // Auth routes
 

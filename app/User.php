@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class User extends Authenticatable
 {
     use Notifiable, SoftDeletes, HasRoles;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -42,6 +42,11 @@ class User extends Authenticatable
     protected static function boot()
     {
         parent::boot();
+
+        self::creating(function ($user) {
+            if ($user->is_admin != 1)
+                $user->uuid = IdGenerator::generate(['table' => $user->table, 'field' => 'uuid', 'length' => 10, 'prefix' =>'PFC']);
+        });
 
         static::created(function ($user) {
             if ($user->is_admin != 1)

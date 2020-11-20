@@ -174,7 +174,8 @@
         <div class="container">
             <div class="row">
                 <div class="player-head text-center w-100 p-3 mb-2">
-                    <h4>Players</h4>
+                    <h4 class="float-left">Players</h4>
+                    <a href="{{ url('/compare-player') }}" class="btn btn-primary btn-sm float-right text-white">Compare Players</a>
                 </div>
             </div>
             <div class="row">
@@ -194,7 +195,6 @@
                                         @endif
                                     @endforeach
                                     </p>
-                                    <button class="btn btn-sm btn-primary">Add To Compare</button>
                                 </div>
                             </div>
                         </a>
