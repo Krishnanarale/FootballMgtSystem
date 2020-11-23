@@ -189,11 +189,7 @@
                                 <div class="card-body-head w-100">
                                     <h5 class="player-title"><b>{{ $player->user->first_name }} {{ $player->user->last_name }}</b></h5>
                                     <p>
-                                    @foreach($positions as $position)
-                                    @if($player->position_id == $position->id)
-                                            <span class="player-info">({{ $position->name }})</span>
-                                        @endif
-                                    @endforeach
+                                            <span class="player-info">({{ $player->user->uuid }})</span>
                                     </p>
                                 </div>
                             </div>

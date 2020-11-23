@@ -21,4 +21,8 @@ class Player extends Model
     {
         return $this->hasMany(Evaluation::class);
     }
+
+    public  function  hasPositions() {
+        return $this->hasMany(PlayerHasPositions::class);
+    }
 }

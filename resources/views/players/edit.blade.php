@@ -124,26 +124,7 @@
                                        value="{{ old('school_attended') ?? $player->school_attended }}">
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="position_id">Position:</label>
-                                <select class="form-control @error('position_id') is-invalid @enderror"
-                                        name="position_id" id="position_id">
-                                    <option value="">Select</option>
-                                    @if($positions)
-                                        @foreach($positions as $position)
-                                            <option
-                                                value="{{ $position->id }}" {{ ($player->position_id == $position->id) ? 'selected' : ''}}>{{ $position->name }}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                                @error('position_id')
-                                <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-              </span>
-                                @enderror
-                            </div>
-                        </div>
+
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="foot">Prefered Foot:</label>
@@ -193,6 +174,18 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="position_id">Position:</label>
+                                @foreach($positions as $position)
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="positions[]" value="{{ $position->id }}" {{ (in_array($position->id, $check)) ? "checked" : '' }}>{{ $position->name }}
+                                    </label>
+                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

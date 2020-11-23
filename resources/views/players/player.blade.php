@@ -125,7 +125,7 @@
                                 <li class="m-4"><strong>UId :</strong> {{ $player->user->uuid }}</li>
                                 <li class="m-4"><strong>Gender :</strong> {{ ucfirst($player->gender) }}</li>
                                 <li class="m-4"><strong>DOB :</strong> {{ $player->date_of_birth }}</li>
-                                <li class="m-4"><strong>Position :</strong> {{ $position->name ?? '' }}</li>
+{{--                                <li class="m-4"><strong>Position :</strong> </li>--}}
                                 <li class="m-4"><strong>Prefered Foot :</strong> {{ ucfirst($player->foot) }}</li>
                                 <li class="m-4"><strong>Video Link :</strong> <a href="{{ $player->video_link }}" target="_blank">{{ $player->video_link }}</a></li>
                                 <li class="m-4"><strong>Summary :</strong> PATAAKI FOOTBALL CLUB is a not for profit Football Organization whose aim is to nature young talented football athletes and improve their lives as they develop in the game. Pataaki Football Club (PFC) was formerly known as CHILDLIFE SOCCER ACADEMY which was a small community football group of kids from the Garden Compound. The kids would get together to play everyday at the Olympia Secondary School grounds with the aim to stay off bad habits such drug and alcohol abuse among many. PFC is registered with FOOTBALL ASSOCIATION OF ZAMBIA (FAZ). Our girls play the Senior Super League for girls and our boys are playing the Division 4 league under league.</li>

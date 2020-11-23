@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Players;
 
 use App\Activity;
+use App\Evaluation;
+use App\PlayerHasPositions;
 use App\User;
 use App\Squad;
 use App\Player;
@@ -74,7 +76,12 @@ class PlayersController extends Controller
     {
         $positions = Position::all();
         $squads = Squad::all();
-        return view('players.edit', compact('player', 'positions', 'squads'));
+        $hasPositions = PlayerHasPositions::where('player_id', $player->id)->get();
+        $check = [];
+        foreach ($hasPositions as $hp) {
+            array_push($check, $hp->position_id);
+        }
+        return view('players.edit', compact('player', 'positions', 'squads', 'check'));
     }
 
     /**
@@ -98,6 +105,11 @@ class PlayersController extends Controller
             'guardian_phone' => 'required|numeric',
         ]);
         $data = $request->all();
+        $positions = array();
+        if ($data['positions'] != '') {
+            $positions = $data['positions'];
+            unset($data['positions']);
+        }
         // moving file
         if ($request->file('avatar') != '') {
             $data['avatar'] = $request->file('avatar')->store('avatars', 'public');
@@ -113,6 +125,12 @@ class PlayersController extends Controller
         unset($data['_method']);
         $result = Player::where('id', $player->id)
             ->update($data);
+        if ($result) {
+            PlayerHasPositions::where('player_id', $player->id)->delete();
+            foreach ($positions as $key => $position) {
+                PlayerHasPositions::create(['player_id' => $player->id, 'position_id' => $position]);
+            }
+        }
         return redirect()->back()->with('status', 'Profile updated!');;
     }
 

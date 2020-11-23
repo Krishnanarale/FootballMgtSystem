@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\PlayerHasPositions;
 use Illuminate\Http\Request;
 use App\Player;
 use App\Position;
@@ -56,7 +57,12 @@ class PlayersController extends Controller
         //
         $positions = Position::all();
         $squads = Squad::all();
-        return view('admin.players.show', compact('player', 'positions', 'squads'));
+        $hasPositions = PlayerHasPositions::where('player_id', $player->id)->get();
+        $check = [];
+        foreach ($hasPositions as $hp) {
+            array_push($check, $hp->position_id);
+        }
+        return view('admin.players.show', compact('player', 'positions', 'squads', 'check'));
     }
 
     /**
@@ -86,7 +92,12 @@ class PlayersController extends Controller
     {
         $positions = Position::all();
         $squads = Squad::all();
-        return view('admin.players.edit', compact('player', 'positions', 'squads'));
+        $hasPositions = PlayerHasPositions::where('player_id', $player->id)->get();
+        $check = [];
+        foreach ($hasPositions as $hp) {
+            array_push($check, $hp->position_id);
+        }
+        return view('admin.players.edit', compact('player', 'positions', 'squads', 'check'));
     }
 
     /**
@@ -114,6 +125,11 @@ class PlayersController extends Controller
             'received_by_remark' => 'required',
         ]);
         $data = $request->all();
+        $positions = array();
+        if ($data['positions'] != '') {
+            $positions = $data['positions'];
+            unset($data['positions']);
+        }
         // moving file
         if ($request->file('avatar') != '') {
             $data['avatar'] = $request->file('avatar')->store('avatars', 'public');
@@ -139,6 +155,12 @@ class PlayersController extends Controller
         unset($data['_method']);
         $data['received_by_id'] = auth()->user()->id;
         $result = Player::where('id', $player->id)->update($data);
+        if ($result) {
+            PlayerHasPositions::where('player_id', $player->id)->delete();
+            foreach ($positions as $key => $position) {
+                PlayerHasPositions::create(['player_id' => $player->id, 'position_id' => $position]);
+            }
+        }
         return ($result == 1) ? redirect('/admin/players') : "";
     }
 
