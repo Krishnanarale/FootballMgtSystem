@@ -70,6 +70,12 @@ class PlayersController extends Controller
         return view('admin.players.identity-card', compact('player'));
     }
 
+    public function identityCards()
+    {
+        $players = Player::all();
+        return view('admin.players.identity-cards', compact('players'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -113,6 +119,21 @@ class PlayersController extends Controller
             $data['avatar'] = $request->file('avatar')->store('avatars', 'public');
         } else {
             unset($data['avatar']);
+        }
+        if ($request->file('document_one') != '') {
+            $data['document_one'] = $request->file('document_one')->store('document_one', 'public');
+        } else {
+            unset($data['document_one']);
+        }
+        if ($request->file('document_two') != '') {
+            $data['document_two'] = $request->file('document_two')->store('document_two', 'public');
+        } else {
+            unset($data['document_two']);
+        }
+        if ($request->file('document_three') != '') {
+            $data['document_three'] = $request->file('document_three')->store('document_three', 'public');
+        } else {
+            unset($data['document_three']);
         }
         unset($data['_token']);
         unset($data['_method']);

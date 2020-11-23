@@ -113,8 +113,8 @@
                                    name="avatar">
                             @error('avatar')
                             <span class="invalid-feedback" role="alert">
-              <strong>{{ $message }}</strong>
-            </span>
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
                         </div>
                         <div class="col-md-3">
@@ -170,10 +170,29 @@
                                            id="contract_copy" name="contract_copy">
                                     @error('contract_copy')
                                     <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-              </span>
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                     @enderror
+                                @else
+                                    @if($player->contract_copy)
+                                        <div class="form-group">
+                                            <label>Contract Soft Copy:</label>
+                                            <a class="form-control" href="{{ asset('/storage/'.$player->contract_copy) }}" target="_blank"><i class="fas fa-fw fa-download"></i></a>
+                                        </div>
+                                    @endif
                                 @endif
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="contract_copy">Video Link:</label>
+                                <input type="text" class="form-control @error('video_link') is-invalid @enderror"
+                                       id="video_link" name="video_link" value="{{ old('video_link') ?? $player->video_link }}">
+                                @error('video_link')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -254,7 +273,7 @@
                                     @endif
                                 </select>
                                 @error('received_by_squad')
-                                    <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror

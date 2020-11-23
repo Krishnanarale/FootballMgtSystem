@@ -9,7 +9,8 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Players</h6>
+        <h6 class="m-0 font-weight-bold text-primary float-left">Players</h6>
+        <a href="{{ url('/admin/players/identity-cards') }}" target="_blank" class="text-primary float-right">Print All I-cards</a>
     </div>
     <div class="card-body">
         <div class="table-responsive">

@@ -139,6 +139,60 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-3">
+                        <label for="document_one">Document 1:</label>
+                        <input type="file" class="form-control @error('document_one') is-invalid @enderror" id="document_one"
+                               name="document_one">
+                        @error('document_one')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="col-md-3">
+                        <label for="document_two">Document 2:</label>
+                        <input type="file" class="form-control @error('document_two') is-invalid @enderror" id="document_two"
+                               name="document_two">
+                        @error('document_two')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="col-md-3">
+                        <label for="document_three">Document 3:</label>
+                        <input type="file" class="form-control @error('document_three') is-invalid @enderror" id="document_three"
+                               name="document_three">
+                        @error('document_three')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="col-md-3">
+                        @if($player->document_one)
+                            <div class="form-group">
+                                <label>Document 1:</label>
+                                <a class="form-control" href="{{ asset('/storage/'.$player->document_one) }}" target="_blank"><i class="fas fa-fw fa-download"></i></a>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="col-md-3">
+                        @if($player->document_two)
+                            <div class="form-group">
+                                <label>Document 2:</label>
+                                <a class="form-control" href="{{ asset('/storage/'.$player->document_two) }}" target="_blank"><i class="fas fa-fw fa-download"></i></a>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="col-md-3">
+                        @if($player->document_three)
+                            <div class="form-group">
+                                <label>Document 3:</label>
+                                <a class="form-control" href="{{ asset('/storage/'.$player->document_three) }}" target="_blank"><i class="fas fa-fw fa-download"></i></a>
+                            </div>
+                        @endif
+                    </div>
                 </div>
                 <hr>
                 <label><strong>PARENT / GUARDIAN INFO</strong></label>

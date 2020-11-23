@@ -23,16 +23,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e5c7f36-cc12-4d99-b07d-46d890c00f1f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/players/compare/compare.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/players/compare/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/FootballMgtSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FootballMgtSystem.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/players/identity-cards.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/players/players-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/players-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PlayersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PlayersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_25_041049_create_players_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_25_041049_create_players_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/players/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/players/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/players/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/players/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/players/compare/compare.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/compare/compare.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/players/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/players/player.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/player.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -173,13 +172,14 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/players/compare" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/players" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/admin/players" />
       <recent name="$PROJECT_DIR$/resources/views/players/compare" />
       <recent name="$PROJECT_DIR$/resources/views" />
       <recent name="$PROJECT_DIR$/resources/views/players" />
@@ -214,6 +214,8 @@
       <workItem from="1605446679466" duration="1595000" />
       <workItem from="1605591696968" duration="17368000" />
       <workItem from="1605789334351" duration="5202000" />
+      <workItem from="1606028333430" duration="2420000" />
+      <workItem from="1606053393092" duration="6738000" />
     </task>
     <servers />
   </component>
@@ -264,9 +266,9 @@
       <screen x="0" y="0" width="1366" height="767" />
     </state>
     <state x="341" y="169" key="run.anything.popup/0.0.1366.767@0.0.1366.767" timestamp="1605792909127" />
-    <state x="346" y="88" width="672" height="678" key="search.everywhere.popup" timestamp="1605792818658">
+    <state x="346" y="88" width="672" height="678" key="search.everywhere.popup" timestamp="1606060669281">
       <screen x="0" y="0" width="1366" height="767" />
     </state>
-    <state x="346" y="88" width="672" height="678" key="search.everywhere.popup/0.0.1366.767@0.0.1366.767" timestamp="1605792818658" />
+    <state x="346" y="88" width="672" height="678" key="search.everywhere.popup/0.0.1366.767@0.0.1366.767" timestamp="1606060669281" />
   </component>
 </project>

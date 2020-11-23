@@ -56,6 +56,7 @@ Route::middleware(['auth'])->group(function () {
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/home', 'HomeController@handleAdmin')->name('admin.route'); // Admin Dashboard
     Route::get('/players/{player}/identity-card', 'Admin\PlayersController@identityCard'); // Player Print identity card
+    Route::get('/players/identity-cards', 'Admin\PlayersController@identityCards');
     Route::put('/players/{player}/evaluations/update', 'Admin\EvaluationController@update');
     Route::get('/players/{player}/evaluations/edit', 'Admin\EvaluationController@edit');
 

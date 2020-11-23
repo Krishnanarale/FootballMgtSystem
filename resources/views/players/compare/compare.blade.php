@@ -1,20 +1,9 @@
-<!doctype html>
-<html lang="en" class="no-js">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+@extends('layouts.front')
 
-    <link rel="stylesheet" href="frontTheam/css/reset.css"> <!-- CSS reset -->
-    <link rel="stylesheet" href="frontTheam/css/style.css"> <!-- Resource style -->
-
-    <title>Products Comparison Table | CodyHouse</title>
-    <!-- css -->
-    <style type="text/css">
-
-    </style>
-</head>
-<body>
+@section('content')
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="frontTheam/css/reset.css"> <!-- CSS reset -->
+<link rel="stylesheet" href="frontTheam/css/style.css"> <!-- Resource style -->
 <section class="cd-products-comparison-table">
 
 
@@ -63,7 +52,4 @@
 
     </div> <!-- .cd-products-table -->
 </section> <!-- .cd-products-comparison-table -->
-<!-- <script src="js/jquery-2.1.4.js"></script>
-<script src="js/main.js"></script> --> <!-- Resource jQuery -->
-</body>
-</html>
+@endsection
