@@ -106,8 +106,8 @@
             margin-top: 0 !important;
         }
         .DescriptionContent table.table tbody tr {
-            cursor: pointer;}
-
+            cursor: pointer;
+        }
     </style>
     <!-- single player -->
 
@@ -175,6 +175,10 @@
                                         <td colspan="2" class="text-center">{{"No Evaluation Available"}}</td>
                                     </tr>
                                 @endif
+                                <tr>
+                                    <td><strong class="text-primary">Rating Average</strong></td>
+                                    <td><strong class="text-primary">{{ number_format($sum/45, 1) }} / 5</strong></td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>

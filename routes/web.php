@@ -32,7 +32,11 @@ Route::get('/players/{player}/show', function (Player $player) {
     $position = Position::find($player->position_id);
     $activities = Activity::all();
     $scoreTexts = ScoreText::all();
-    return view('players.player', compact('player', 'position', 'scoreTexts', 'activities'));
+    $sum = 0;
+    foreach ($player->evaluations as $rating){
+        $sum += $rating->score_text_id;
+    }
+    return view('players.player', compact('player', 'position', 'scoreTexts', 'activities', 'sum'));
 });
 
 Route::get('/about-us', 'PagesController@about'); // about page

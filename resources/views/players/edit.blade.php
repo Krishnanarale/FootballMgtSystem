@@ -176,19 +176,125 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="position_id">Position:</label>
                                 @foreach($positions as $position)
-                                <div class="form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input" name="positions[]" value="{{ $position->id }}" {{ (in_array($position->id, $check)) ? "checked" : '' }}>{{ $position->name }}
-                                    </label>
-                                </div>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" name="positions[]" value="{{ $position->id }}" {{ (in_array($position->id, $check)) ? "checked" : '' }}>{{ $position->name }}
+                                        </label>
+                                    </div>
                                 @endforeach
                             </div>
                         </div>
+{{--                        <div class="col-md-3">--}}
+{{--                            <label for="document_one">Document 1:</label>--}}
+{{--                            <input type="file" class="form-control @error('document_one') is-invalid @enderror" id="document_one"--}}
+{{--                                   name="document_one">--}}
+{{--                            @error('document_one')--}}
+{{--                            <span class="invalid-feedback" role="alert">--}}
+{{--                                <strong>{{ $message }}</strong>--}}
+{{--                            </span>--}}
+{{--                            @enderror--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-3">--}}
+{{--                            <label for="document_two">Document 2:</label>--}}
+{{--                            <input type="file" class="form-control @error('document_two') is-invalid @enderror" id="document_two"--}}
+{{--                                   name="document_two">--}}
+{{--                            @error('document_two')--}}
+{{--                            <span class="invalid-feedback" role="alert">--}}
+{{--                                <strong>{{ $message }}</strong>--}}
+{{--                            </span>--}}
+{{--                            @enderror--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-3">--}}
+{{--                            <label for="document_three">Document 3:</label>--}}
+{{--                            <input type="file" class="form-control @error('document_three') is-invalid @enderror" id="document_three"--}}
+{{--                                   name="document_three">--}}
+{{--                            @error('document_three')--}}
+{{--                            <span class="invalid-feedback" role="alert">--}}
+{{--                                <strong>{{ $message }}</strong>--}}
+{{--                            </span>--}}
+{{--                            @enderror--}}
+{{--                        </div>--}}
+                        <div class="col-md-3">
+                            @if($player->document_one)
+                                <div class="form-group">
+                                    <label>Document 1:</label>
+                                    <a class="form-control" href="{{ asset('/storage/'.$player->document_one) }}" target="_blank"><i class="fas fa-fw fa-download"></i></a>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-3">
+                            @if($player->document_two)
+                                <div class="form-group">
+                                    <label>Document 2:</label>
+                                    <a class="form-control" href="{{ asset('/storage/'.$player->document_two) }}" target="_blank"><i class="fas fa-fw fa-download"></i></a>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-3">
+                            @if($player->document_three)
+                                <div class="form-group">
+                                    <label>Document 3:</label>
+                                    <a class="form-control" href="{{ asset('/storage/'.$player->document_three) }}" target="_blank"><i class="fas fa-fw fa-download"></i></a>
+                                </div>
+                            @endif
+                        </div>
                     </div>
+                    <hr>
+                    <section id="PlayerBiog" class="player-biography mt-5">
+                        <div class="bg-dark-none">
+                            <div class="container">
+                                <div class="full-description pt-5 pd-5">
+                                    <div class="headDescription mb-3">
+                                        <h3>EVALUATION</h3>
+                                    </div>
+                                    <div class="DescriptionContent">
+                                        <table class="table table-bordered table-condensed text-white">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-primary">Skills</th>
+                                                <th class="text-primary">Score</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if(count($player->evaluations) > 1)
+                                                @foreach($activities as $activity)
+                                                    <tr data-toggle="collapse" data-target="#item-{{ $activity->id }}" id="activity-{{ $activity->id }}">
+                                                        <td colspan="2"><strong class="text-dark">{{ $activity->name }} <i class="far fa-caret-square-down ml-2"></i> </strong></td>
+
+                                                    </tr>
+                                                    @foreach($activity->skills as $skill)
+                                                        <tr id="item-{{ $activity->id }}" class="collapse {{($activity->id === 1) ? 'show' : ''}}">
+                                                            <td class="text-dark">{{ $skill->name }}</td>
+                                                            <td class="text-dark">
+                                                                @foreach($scoreTexts as $text)
+                                                                    @if($player->evaluations[$skill->id - 1]->score_text_id == $text->id)
+                                                                        {{$text->name}}
+                                                                    @endif
+                                                                @endforeach
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td colspan="2" class="text-center">{{"No Evaluation Available"}}</td>
+                                                </tr>
+                                            @endif
+                                            <tr>
+                                                <td><strong class="text-primary">Rating Average</strong></td>
+                                                <td><strong class="text-primary">{{ number_format($sum/45, 1) }} / 5</strong></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                     <hr>
                     <label><strong>PARENT / GUARDIAN INFO</strong></label>
                     <div class="row">

@@ -11,7 +11,7 @@
     <title>I-Cards</title>
 
     <!-- Scripts -->
-    <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
+<!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -34,39 +34,59 @@
     <link href="{{ asset('theam/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
     <script src="{{ asset('theam/vendor/jquery/jquery.min.js') }}"></script>
+    <style>
+        .card-img {
+            height: 150px;
+            overflow: hidden;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            width: 100%;}
+        .card-img img {
+            margin: auto;
+        }
+        .card {
+            margin-bottom: 60px;
+            height: 450px;
+        }
+        .card ul {
+            padding: 0;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="app">
-        <!-- Page Wrapper -->
-        <div id="wrapper">
+<div id="app">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-            <!-- Content Wrapper -->
-            <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-                <!-- Main Content -->
-                <div id="content">
+            <!-- Main Content -->
+            <div id="content">
 
-                    <!-- Topbar -->
-                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                        <!-- Sidebar Toggle (Topbar) -->
-                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                            <i class="fa fa-bars"></i>
-                        </button>
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
 
-                        <!-- Topbar Navbar -->
-                        <ul class="navbar-nav ml-auto">
-                            @guest
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
                             @endif
-                            @else
+                        @else
 
                             <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -88,23 +108,24 @@
                                     </a>
                                 </div>
                             </li>
-                            @endguest
-                        </ul>
+                        @endguest
+                    </ul>
 
-                    </nav>
-                    <!-- End of Topbar -->
+                </nav>
+                <!-- End of Topbar -->
 
-                    <!-- Begin Page Content -->
-                    <div class="container-fluid">
-                        <div class="col-md-4 offset-md-4">
-                            @foreach($players as $player)
-                                <div class="card m-4">
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <div class="col-md-12">
+                        @foreach($players as $player)
+                            <div class=" col-sm-4 float-left">
+                                <div class="card">
                                     <div class="card-header text-center">
                                         <h4 class="text-primary">Pataakifc</h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-12 text-center mb-4"><img class="img-thumbnail rounded img-fluid" src="{{ ($player->avatar != '' ) ? '/storage/'. $player->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" height="150px" width="150px" alt="{{ $player->user->first_name }}"></div>
+                                            <div class="col-md-12 text-center mb-4 card-img"><img class="img-thumbnail rounded img-fluid" src="{{ ($player->avatar != '' ) ? '/storage/'. $player->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" height="150px" width="150px" alt="{{ $player->user->first_name }}"></div>
                                             <div class="col-md-10 offset-md-1">
                                                 <ul style="list-style-type: none;">
                                                     <li>Name : {{ $player->user->first_name }} {{ $player->user->last_name }}</li>
@@ -116,58 +137,59 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
-                    <!-- <div class="row">
-                        <a class="btn btn-warning btn-sm float-right">Back</a>
-                    </div> -->
-                    <script>
-                        $(document).ready(() => {
-
-                            window.print();
-                        })
-                    </script>
-                    </main>
-
                 </div>
-                <!-- /.container-fluid -->
+                <!-- <div class="row">
+                    <a class="btn btn-warning btn-sm float-right">Back</a>
+                </div> -->
+                <script>
+                    $(document).ready(() => {
+
+                        window.print();
+                    })
+                </script>
+                </main>
 
             </div>
-            <!-- End of Main Content -->
+            <!-- /.container-fluid -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Main Content -->
 
     </div>
-    <!-- End of Page Wrapper -->
-    </div>
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('theam/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- End of Content Wrapper -->
 
-    <!-- Core plugin JavaScript-->
-    <script src="{{ asset('theam/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+</div>
+<!-- End of Page Wrapper -->
+</div>
+<!-- Bootstrap core JavaScript-->
+<script src="{{ asset('theam/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('theam/js/sb-admin-2.min.js') }}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{{ asset('theam/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-    <!-- Datatable js -->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="{{ asset('theam/js/sb-admin-2.min.js') }}"></script>
+
+<!-- Datatable js -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 
 
-    <!-- Page level plugins -->
-    <script src="{{asset('theam/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('theam/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+<!-- Page level plugins -->
+<script src="{{asset('theam/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('theam/vendor/datatables/jquery.dataTables.min.js')}}"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="{{asset('theam/js/demo/datatables-demo.js')}}"></script>
+<!-- Page level custom scripts -->
+<script src="{{asset('theam/js/demo/datatables-demo.js')}}"></script>
 
-    <!-- Page level plugins -->
-    <!-- <script src="{{ asset('theam/vendor/chart.js/Chart.min.js') }}"></script> -->
+<!-- Page level plugins -->
+<!-- <script src="{{ asset('theam/vendor/chart.js/Chart.min.js') }}"></script> -->
 
-    <!-- Page level custom scripts -->
-    <!-- <script src="{{ asset('theam/js/demo/chart-area-demo.js') }}"></script>
+<!-- Page level custom scripts -->
+<!-- <script src="{{ asset('theam/js/demo/chart-area-demo.js') }}"></script>
 <script src="{{ asset('theam/js/demo/chart-pie-demo.js') }}"></script> -->
 </body>
 

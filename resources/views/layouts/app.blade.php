@@ -140,6 +140,7 @@
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"> {{ Auth::user()->uuid }}</span>
                                     <img class="img-profile rounded-circle" src="{{ (Auth::user()->player->avatar != '' ) ? '/storage/'. Auth::user()->player->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}">
                                 </a>
                                 <!-- Dropdown - User Information -->

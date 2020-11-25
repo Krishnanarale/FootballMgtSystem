@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Players;
 use App\Activity;
 use App\Evaluation;
 use App\PlayerHasPositions;
+use App\ScoreText;
 use App\User;
 use App\Squad;
 use App\Player;
@@ -76,12 +77,18 @@ class PlayersController extends Controller
     {
         $positions = Position::all();
         $squads = Squad::all();
+        $activities = Activity::all();
+        $scoreTexts = ScoreText::all();
+        $sum = 0;
+        foreach ($player->evaluations as $rating){
+            $sum += $rating->score_text_id;
+        }
         $hasPositions = PlayerHasPositions::where('player_id', $player->id)->get();
         $check = [];
         foreach ($hasPositions as $hp) {
             array_push($check, $hp->position_id);
         }
-        return view('players.edit', compact('player', 'positions', 'squads', 'check'));
+        return view('players.edit', compact('player', 'positions', 'squads', 'check', 'activities', 'scoreTexts', 'sum'));
     }
 
     /**

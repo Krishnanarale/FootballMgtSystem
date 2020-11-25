@@ -45,7 +45,7 @@ class User extends Authenticatable
 
         self::creating(function ($user) {
             if ($user->is_admin != 1)
-                $user->uuid = IdGenerator::generate(['table' => $user->table, 'field' => 'uuid', 'length' => 10, 'prefix' =>'PFC']);
+                $user->uuid = IdGenerator::generate(['table' => $user->table, 'field' => 'uuid', 'length' => 7, 'prefix' =>'PFC']);
         });
 
         static::created(function ($user) {
