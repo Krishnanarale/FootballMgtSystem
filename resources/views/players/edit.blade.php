@@ -244,58 +244,6 @@
                         </div>
                     </div>
                     <hr>
-                    <section id="PlayerBiog" class="player-biography mt-5">
-                        <div class="bg-dark-none">
-                            <div class="container">
-                                <div class="full-description pt-5 pd-5">
-                                    <div class="headDescription mb-3">
-                                        <h3>EVALUATION</h3>
-                                    </div>
-                                    <div class="DescriptionContent">
-                                        <table class="table table-bordered table-condensed text-white">
-                                            <thead>
-                                            <tr>
-                                                <th class="text-primary">Skills</th>
-                                                <th class="text-primary">Score</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @if(count($player->evaluations) > 1)
-                                                @foreach($activities as $activity)
-                                                    <tr data-toggle="collapse" data-target="#item-{{ $activity->id }}" id="activity-{{ $activity->id }}">
-                                                        <td colspan="2"><strong class="text-dark">{{ $activity->name }} <i class="far fa-caret-square-down ml-2"></i> </strong></td>
-
-                                                    </tr>
-                                                    @foreach($activity->skills as $skill)
-                                                        <tr id="item-{{ $activity->id }}" class="collapse {{($activity->id === 1) ? 'show' : ''}}">
-                                                            <td class="text-dark">{{ $skill->name }}</td>
-                                                            <td class="text-dark">
-                                                                @foreach($scoreTexts as $text)
-                                                                    @if($player->evaluations[$skill->id - 1]->score_text_id == $text->id)
-                                                                        {{$text->name}}
-                                                                    @endif
-                                                                @endforeach
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                @endforeach
-                                            @else
-                                                <tr>
-                                                    <td colspan="2" class="text-center">{{"No Evaluation Available"}}</td>
-                                                </tr>
-                                            @endif
-                                            <tr>
-                                                <td><strong class="text-primary">Rating Average</strong></td>
-                                                <td><strong class="text-primary">{{ number_format($sum/45, 1) }} / 5</strong></td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <hr>
                     <label><strong>PARENT / GUARDIAN INFO</strong></label>
                     <div class="row">
                         <div class="col-md-3">
@@ -386,6 +334,58 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
+                    <section id="PlayerBiog" class="player-biography mt-5">
+                        <div class="bg-dark-none">
+                            <div class="container">
+                                <div class="full-description pt-5 pd-5">
+                                    <div class="headDescription mb-3">
+                                        <h3>EVALUATION</h3>
+                                    </div>
+                                    <div class="DescriptionContent">
+                                        <table class="table table-bordered table-condensed text-white">
+                                            <thead>
+                                            <tr>
+                                                <th class="text-primary">Skills</th>
+                                                <th class="text-primary">Score</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @if(count($player->evaluations) > 1)
+                                                @foreach($activities as $activity)
+                                                    <tr data-toggle="collapse" data-target="#item-{{ $activity->id }}" id="activity-{{ $activity->id }}">
+                                                        <td colspan="2"><strong class="text-dark">{{ $activity->name }} <i class="far fa-caret-square-down ml-2"></i> </strong></td>
+
+                                                    </tr>
+                                                    @foreach($activity->skills as $skill)
+                                                        <tr id="item-{{ $activity->id }}" class="collapse {{($activity->id === 1) ? 'show' : ''}}">
+                                                            <td class="text-dark">{{ $skill->name }}</td>
+                                                            <td class="text-dark">
+                                                                @foreach($scoreTexts as $text)
+                                                                    @if($player->evaluations[$skill->id - 1]->score_text_id == $text->id)
+                                                                        {{$text->name}}
+                                                                    @endif
+                                                                @endforeach
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td colspan="2" class="text-center">{{"No Evaluation Available"}}</td>
+                                                </tr>
+                                            @endif
+                                            <tr>
+                                                <td><strong class="text-primary">Rating Average</strong></td>
+                                                <td><strong class="text-primary">{{ number_format($sum/45, 1) }} / 5</strong></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                     <button type="submit" class="btn btn-primary float-right">Submit</button>
                 </form>
             </div>

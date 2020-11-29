@@ -25,18 +25,13 @@
     <list default="true" id="1e5c7f36-cc12-4d99-b07d-46d890c00f1f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PlayersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PlayersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Players/ComparePlayerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Players/ComparePlayerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Players/PlayersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Players/PlayersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontTheam/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontTheam/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/players/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/players/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/players/identity-cards.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/players/identity-cards.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/PlayerHasPositions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PlayerHasPositions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Position.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Position.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/front.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/front.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/players/compare/compare.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/compare/compare.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/players/compare/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/compare/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/players/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/players/player.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/player.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +220,10 @@
       <workItem from="1606140355682" duration="2473000" />
       <workItem from="1606219286810" duration="9750000" />
       <workItem from="1606307837681" duration="3896000" />
-      <workItem from="1606320165314" duration="1735000" />
+      <workItem from="1606320165314" duration="1955000" />
+      <workItem from="1606631160748" duration="10499000" />
+      <workItem from="1606641710282" duration="1793000" />
+      <workItem from="1606643534397" duration="354000" />
     </task>
     <servers />
   </component>
@@ -280,9 +278,9 @@
       <screen x="0" y="0" width="1366" height="767" />
     </state>
     <state x="341" y="169" key="run.anything.popup/0.0.1366.767@0.0.1366.767" timestamp="1605792909127" />
-    <state x="346" y="88" width="672" height="678" key="search.everywhere.popup" timestamp="1606320469864">
+    <state x="346" y="88" width="672" height="678" key="search.everywhere.popup" timestamp="1606643847126">
       <screen x="0" y="0" width="1366" height="767" />
     </state>
-    <state x="346" y="88" width="672" height="678" key="search.everywhere.popup/0.0.1366.767@0.0.1366.767" timestamp="1606320469864" />
+    <state x="346" y="88" width="672" height="678" key="search.everywhere.popup/0.0.1366.767@0.0.1366.767" timestamp="1606643847126" />
   </component>
 </project>

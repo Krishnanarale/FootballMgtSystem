@@ -32,7 +32,7 @@
                         <li><h3>{{ $userOne->first_name }} {{ $userOne->last_name }}</h3></li>
                         <li>{{ $userOne->uuid }}</li>
                         <li>{{ ($userOne->player->foot != "") ? ucfirst($userOne->player->foot) : "N/A" }}</li>
-                        <li>{{ $userOne->player->hasPositions->isEmpty() == '' ? $positions[$userOne->player->hasPositions[0]->position_id]->name : 'N/A' }} </li>
+                        <li>@forelse($userOne->player->hasPositions as $data) {{$data->position->name.", "}} @empty {{ 'N/A' }} @endforelse</li>
                         <li>{{ number_format($userOneRating/45, 1) }} / 5</li>
                     </ul>
                 </li> <!-- .product -->
@@ -48,7 +48,7 @@
                         <li><h3>{{ $userTwo->first_name }} {{ $userTwo->last_name }}</h3></li>
                         <li>{{ $userTwo->uuid }}</li>
                         <li>{{ ($userTwo->player->foot != "") ? ucfirst($userTwo->player->foot) : "N/A" }}</li>
-                        <li>{{ $userTwo->player->hasPositions->isEmpty() == '' ? $positions[$userTwo->player->hasPositions[0]->position_id]->name : 'N/A' }} </li>
+                        <li>@forelse($userTwo->player->hasPositions as $data) {{$data->position->name.", "}} @empty {{ 'N/A' }} @endforelse</li>
                         <li>{{ number_format($userTwoRating/45, 1) }} / 5</li>
                     </ul>
                 </li> <!-- .product -->

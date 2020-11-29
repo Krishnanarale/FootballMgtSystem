@@ -162,6 +162,7 @@
                                     @csrf
                                 </form>
                             </a>
+                            <a class="ml-2 text-sm text-gray-700 underline" href="/players/{{Auth::user()->player->id}}/edit">Profile</a>
                         @else
                             <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
 

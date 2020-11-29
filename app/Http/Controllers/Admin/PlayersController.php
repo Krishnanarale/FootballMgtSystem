@@ -116,9 +116,9 @@ class PlayersController extends Controller
             'address' => 'required',
             'phone' => 'required|numeric',
             'avatar' => 'file|image',
-            'document_one' => 'file|image',
-            'document_two' => 'file|image',
-            'document_three' => 'file|image',
+            'document_one' => 'mimes:doc,pdf,docx,jpeg,jpg,png',
+            'document_two' => 'mimes:doc,pdf,docx,jpeg,jpg,png',
+            'document_three' => 'mimes:doc,pdf,docx,jpeg,jpg,png',
             'guardian_name' => 'required|max:255',
             'guardian_phone' => 'required|numeric',
             'received_by_name' => 'required|string',
@@ -129,7 +129,7 @@ class PlayersController extends Controller
         ]);
         $data = $request->all();
         $positions = array();
-        if ($data['positions'] != '') {
+        if (!empty($data['positions'])) {
             $positions = $data['positions'];
             unset($data['positions']);
         }

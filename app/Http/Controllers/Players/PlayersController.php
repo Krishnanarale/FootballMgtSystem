@@ -113,7 +113,7 @@ class PlayersController extends Controller
         ]);
         $data = $request->all();
         $positions = array();
-        if ($data['positions'] != '') {
+        if (!empty($data['positions'])) {
             $positions = $data['positions'];
             unset($data['positions']);
         }

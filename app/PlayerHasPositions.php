@@ -13,4 +13,8 @@ class PlayerHasPositions extends Model
     {
         return $this->belongsTo(Player::class);
     }
+
+    public function  position(){
+        return $this->belongsTo(Position::class);
+    }
 }
