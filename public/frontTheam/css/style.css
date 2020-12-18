@@ -217,7 +217,7 @@ Main Components
 }
 @media only screen and (min-width: 1170px) {
     .cd-products-columns .product {
-        width: 510px;
+        width: 330.90px;
     }
 }
 
@@ -359,7 +359,7 @@ Main Components
 @media only screen and (min-width: 1170px) {
     .cd-products-table .top-info {
         height: 254px;
-        width: 510px;
+        width: 330.90px;
     }
     .cd-products-table .top-info h3 {
         padding-top: 1.4em;

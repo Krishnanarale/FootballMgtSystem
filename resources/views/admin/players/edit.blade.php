@@ -188,6 +188,17 @@
                                 </div>
                             @endif
                         </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="summary">Summary:</label>
+                                <textarea type="text" class="form-control @error('summary') is-invalid @enderror" id="summary" name="summary">{{ old('summary') ?? $player->summary }}</textarea>
+                                @error('summary')
+                                <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                     <hr>
                     <label><strong>PARENT / GUARDIAN INFO</strong></label>

@@ -90,12 +90,12 @@
             border-bottom: 1px solid #eee;
         }
         .player-image {
-            height: 500px;
+            height: 100%;
             overflow: hidden;
+            margin: 0 auto;
+            text-align: center;
         }
         .player-image img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
             object-position: 50% 30%;
         }
@@ -116,7 +116,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 col-md-6 player-image">
-                        <img class="img-rounded" src="{{ ($player->avatar != '' ) ? '/storage/'. $player->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" alt="{{ $player->user->first_name }} {{ $player->user->last_name }}" width="500px">
+                        <img class="img-rounded" src="{{ ($player->avatar != '' ) ? '/storage/'. $player->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" alt="{{ $player->user->first_name }} {{ $player->user->last_name }}">
                     </div>
                     <div class="col-sm-12 col-md-6 player-details">
                         <div class="PlayerInfoContent">
@@ -128,7 +128,7 @@
                                 <li class="m-4"><strong>Positions :</strong> @forelse($player->hasPositions as $data) {{$data->position->name.", "}} @empty {{ 'N/A' }} @endforelse</li>
                                 <li class="m-4"><strong>Prefered Foot :</strong> {{ ucfirst($player->foot) }}</li>
                                 <li class="m-4"><strong>Video Link :</strong> <a href="{{ $player->video_link }}" target="_blank">{{ $player->video_link }}</a></li>
-                                <li class="m-4"><strong>Summary :</strong> PATAAKI FOOTBALL CLUB is a not for profit Football Organization whose aim is to nature young talented football athletes and improve their lives as they develop in the game. Pataaki Football Club (PFC) was formerly known as CHILDLIFE SOCCER ACADEMY which was a small community football group of kids from the Garden Compound. The kids would get together to play everyday at the Olympia Secondary School grounds with the aim to stay off bad habits such drug and alcohol abuse among many. PFC is registered with FOOTBALL ASSOCIATION OF ZAMBIA (FAZ). Our girls play the Senior Super League for girls and our boys are playing the Division 4 league under league.</li>
+                                <li class="m-4"><strong>Summary :</strong> {{ $player->summary }}</li>
                             </ul>
                         </div>
                     </div>
@@ -177,7 +177,7 @@
                                 @endif
                                 <tr>
                                     <td><strong class="text-primary">Rating Average</strong></td>
-                                    <td><strong class="text-primary">{{ number_format($sum/45, 1) }} / 5</strong></td>
+                                    <td><strong class="text-primary">{{ number_format($player->avgRating, 1) }} / 5</strong></td>
                                 </tr>
                                 </tbody>
                             </table>

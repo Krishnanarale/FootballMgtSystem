@@ -113,8 +113,8 @@
         }
 
         .cardBox a.card:hover .card-body-head {
-            -webkit-transform: translateY(-8rem);
-            transform: translateY(-8rem);
+            -webkit-transform: translateY(-2rem);
+            transform: translateY(-2rem);
         }
 
         .cardBox a.card:hover .player-point {
@@ -127,7 +127,7 @@
             height: 350px;
             object-fit: cover;
             width: 100%;
-            object-position: 50% 27%;
+            object-position: 50% 0;
         }
 
         @media screen and (max-width: 768px) {
@@ -175,10 +175,18 @@
             <div class="row">
                 <div class="player-head text-center w-100 p-3 mb-2">
                     <h4 class="float-left">Players</h4>
+                        <div class="form-row align-items-center">
+                            <div class="col-auto">
+                                <label class="sr-only" for="playerId">Search</label>
+                                <input type="text" class="form-control mb-2" id="myInput" onkeyup="myFunction()" placeholder="Search Player Name">
+                            </div>
+                            <div class="col-auto">
+                            </div>
+                        </div>
                     <a href="{{ url('/compare-player') }}" class="btn btn-primary btn-sm float-right text-white">Compare Players</a>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="myUL">
                 @forelse($players as $player)
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 cardBox">
                         <a href="/players/{{ $player->id }}/show" class="card position-relative">
@@ -189,7 +197,7 @@
                                 <div class="card-body-head w-100">
                                     <h5 class="player-title"><b>{{ $player->user->first_name }} {{ $player->user->last_name }}</b></h5>
                                     <p>
-                                            <span class="player-info">({{ $player->user->uuid }})</span>
+                                        <span class="player-info">({{ $player->user->uuid }})</span>
                                     </p>
                                 </div>
                             </div>
@@ -203,4 +211,22 @@
             </div>
         </div>
     </section>
+    <script>
+        function myFunction() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myUL");
+            li = ul.getElementsByClassName("cardBox");
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("b")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 @endsection

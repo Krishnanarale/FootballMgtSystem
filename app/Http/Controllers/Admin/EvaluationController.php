@@ -26,6 +26,9 @@ class EvaluationController extends Controller
             'skills.*' => 'required',
         ]);
 
+        $rating = $this->getAvgEvaluation($validatedData);
+        Player::where('id', $player->id)->update(['avgRating' => $rating]);
+
         foreach ($validatedData['skills'] as $key => $skill) {
             Evaluation::create(['player_id' => $player->id, 'skill_id' => $key, 'score_text_id' => $skill]);
         }
@@ -46,6 +49,9 @@ class EvaluationController extends Controller
             'skills.*' => 'required',
         ]);
 
+        $rating = $this->getAvgEvaluation($validatedData);
+        Player::where('id', $player->id)->update(['avgRating' => $rating]);
+
         Evaluation::where('player_id', $player->id)->delete();
 
         foreach ($validatedData['skills'] as $key => $skill) {
@@ -53,5 +59,12 @@ class EvaluationController extends Controller
         }
 
         return redirect('/admin/players');
+    }
+
+    public function  getAvgEvaluation($data = null) {
+        $sum = 0;
+        foreach ($data['skills'] as $rating)
+            $sum += $rating;
+        return number_format($sum/45, 1);
     }
 }

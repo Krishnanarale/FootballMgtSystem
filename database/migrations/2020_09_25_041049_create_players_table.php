@@ -25,6 +25,8 @@ class CreatePlayersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('school_attended')->nullable();
             $table->string('avatar')->nullable();
+            $table->text('summary')->nullable();
+            $table->float('avgRating')->nullable();
             $table->string('document_one')->nullable();
             $table->string('document_two')->nullable();
             $table->string('document_three')->nullable();

@@ -79,16 +79,12 @@ class PlayersController extends Controller
         $squads = Squad::all();
         $activities = Activity::all();
         $scoreTexts = ScoreText::all();
-        $sum = 0;
-        foreach ($player->evaluations as $rating){
-            $sum += $rating->score_text_id;
-        }
         $hasPositions = PlayerHasPositions::where('player_id', $player->id)->get();
         $check = [];
         foreach ($hasPositions as $hp) {
             array_push($check, $hp->position_id);
         }
-        return view('players.edit', compact('player', 'positions', 'squads', 'check', 'activities', 'scoreTexts', 'sum'));
+        return view('players.edit', compact('player', 'positions', 'squads', 'check', 'activities', 'scoreTexts'));
     }
 
     /**
@@ -105,7 +101,7 @@ class PlayersController extends Controller
             'gender' => 'required',
             'address' => 'required',
             'phone' => 'required|numeric',
-            'avatar' => 'image',
+            'avatar' => 'image|dimensions:min_width=300,min_height=300,max_width=1000,max_height=1000',
             'foot' => 'required',
             'contract_copy' => 'file',
             'guardian_name' => 'required|max:255',

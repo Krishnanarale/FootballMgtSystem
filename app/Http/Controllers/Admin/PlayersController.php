@@ -115,7 +115,7 @@ class PlayersController extends Controller
             'gender' => 'required',
             'address' => 'required',
             'phone' => 'required|numeric',
-            'avatar' => 'file|image',
+            'avatar' => 'image|dimensions:min_width=300,min_height=300,max_width=1000,max_height=1000',
             'document_one' => 'mimes:doc,pdf,docx,jpeg,jpg,png',
             'document_two' => 'mimes:doc,pdf,docx,jpeg,jpg,png',
             'document_three' => 'mimes:doc,pdf,docx,jpeg,jpg,png',

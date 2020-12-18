@@ -25,18 +25,12 @@ class ComparePlayerController extends Controller
         $validatedData = $request->validate([
             'player1' => 'required',
             'player2' => 'required',
+            'player3' => 'required',
         ]);
         $userOne = User::find($validatedData['player1']);
-        $userOneRating = 0;
-        $userTwoRating = 0;
-        foreach ($userOne->player->evaluations as $rating){
-            $userOneRating += $rating->score_text_id;
-        }
         $userTwo = User::find($validatedData['player2']);
-        foreach ($userTwo->player->evaluations as $rating){
-            $userTwoRating += $rating->score_text_id;
-        }
+        $userThree = User::find($validatedData['player3']);
         $positions = Position::all();
-        return view('players.compare.compare', compact('userOne', 'userTwo', 'userOneRating', 'userTwoRating', 'positions'));
+        return view('players.compare.compare', compact('userOne', 'userTwo', 'userThree', 'positions'));
     }
 }

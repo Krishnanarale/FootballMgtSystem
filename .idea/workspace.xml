@@ -24,14 +24,21 @@
   <component name="ChangeListManager">
     <list default="true" id="1e5c7f36-cc12-4d99-b07d-46d890c00f1f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/EvaluationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/EvaluationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PlayersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PlayersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Players/ComparePlayerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Players/ComparePlayerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Players/PlayersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Players/PlayersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/PlayerHasPositions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PlayerHasPositions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Position.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Position.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_25_041049_create_players_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_25_041049_create_players_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/frontTheam/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontTheam/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/players/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/players/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/front.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/front.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/players/compare/compare.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/compare/compare.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/players/compare/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/compare/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/players/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/players/player.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/player.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/players/players-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/players-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,6 +177,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/players" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -223,7 +231,26 @@
       <workItem from="1606320165314" duration="1955000" />
       <workItem from="1606631160748" duration="10499000" />
       <workItem from="1606641710282" duration="1793000" />
-      <workItem from="1606643534397" duration="354000" />
+      <workItem from="1606643534397" duration="539000" />
+      <workItem from="1606816759926" duration="1831000" />
+      <workItem from="1606819177381" duration="1078000" />
+      <workItem from="1606978852337" duration="202000" />
+      <workItem from="1607238592273" duration="1294000" />
+      <workItem from="1607240543827" duration="1781000" />
+      <workItem from="1607242358681" duration="1783000" />
+      <workItem from="1607244175014" duration="868000" />
+      <workItem from="1607247633753" duration="606000" />
+      <workItem from="1607252639142" duration="1894000" />
+      <workItem from="1607254568107" duration="1887000" />
+      <workItem from="1607256498494" duration="3674000" />
+      <workItem from="1607260200379" duration="2306000" />
+      <workItem from="1607262547021" duration="1776000" />
+      <workItem from="1607264359400" duration="1485000" />
+      <workItem from="1607268748605" duration="1636000" />
+      <workItem from="1607359114300" duration="471000" />
+      <workItem from="1607845842168" duration="2724000" />
+      <workItem from="1607946801970" duration="15000" />
+      <workItem from="1608010757499" duration="585000" />
     </task>
     <servers />
   </component>
@@ -244,43 +271,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="278" y="47" width="812" height="682" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603875018021">
-      <screen x="0" y="0" width="1366" height="767" />
-    </state>
-    <state x="278" y="47" width="812" height="682" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.767@0.0.1366.767" timestamp="1603875018021" />
-    <state x="416" y="144" width="536" height="489" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606111613507">
-      <screen x="0" y="0" width="1366" height="767" />
-    </state>
-    <state x="416" y="144" width="536" height="489" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.767@0.0.1366.767" timestamp="1606111613507" />
-    <state x="467" y="132" width="436" height="518" key="FileChooserDialogImpl" timestamp="1603954073247">
-      <screen x="0" y="0" width="1366" height="767" />
-    </state>
-    <state x="467" y="132" width="436" height="518" key="FileChooserDialogImpl/0.0.1366.767@0.0.1366.767" timestamp="1603954073247" />
-    <state width="263" height="500" key="HiddenNamespacesPopup" timestamp="1603852861241">
-      <screen x="0" y="0" width="1366" height="767" />
-    </state>
-    <state width="263" height="500" key="HiddenNamespacesPopup/0.0.1366.767@0.0.1366.767" timestamp="1603852861241" />
-    <state x="478" y="307" width="411" height="162" key="NewPhpFileDialog" timestamp="1605617907852">
-      <screen x="0" y="0" width="1366" height="767" />
-    </state>
-    <state x="478" y="307" width="411" height="162" key="NewPhpFileDialog/0.0.1366.767@0.0.1366.767" timestamp="1605617907852" />
-    <state x="230" y="22" width="1022" height="735" key="SettingsEditor" timestamp="1606111147689">
-      <screen x="0" y="0" width="1366" height="767" />
-    </state>
-    <state x="230" y="22" width="1022" height="735" key="SettingsEditor/0.0.1366.767@0.0.1366.767" timestamp="1606111147689" />
-    <state width="695" height="446" key="SwitcherDM" timestamp="1604849632887">
-      <screen x="0" y="0" width="1366" height="767" />
-    </state>
-    <state width="695" height="446" key="SwitcherDM/0.0.1366.767@0.0.1366.767" timestamp="1604849632887" />
-    <state x="341" y="169" key="run.anything.popup" timestamp="1605792909127">
-      <screen x="0" y="0" width="1366" height="767" />
-    </state>
-    <state x="341" y="169" key="run.anything.popup/0.0.1366.767@0.0.1366.767" timestamp="1605792909127" />
-    <state x="346" y="88" width="672" height="678" key="search.everywhere.popup" timestamp="1606643847126">
-      <screen x="0" y="0" width="1366" height="767" />
-    </state>
-    <state x="346" y="88" width="672" height="678" key="search.everywhere.popup/0.0.1366.767@0.0.1366.767" timestamp="1606643847126" />
   </component>
 </project>

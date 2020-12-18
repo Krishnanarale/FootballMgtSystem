@@ -4,6 +4,7 @@ use App\Activity;
 use App\Player;
 use App\Position;
 use App\ScoreText;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +20,9 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('front.welcome');
+    $players = Player::orderBy('avgRating', 'DESC')->limit(3)->get();
+//    dd($players);
+    return view('front.welcome', compact('players'));
 });
 
 Route::get('/players-list', function () {
@@ -32,11 +35,7 @@ Route::get('/players/{player}/show', function (Player $player) {
     $position = Position::find($player->position_id);
     $activities = Activity::all();
     $scoreTexts = ScoreText::all();
-    $sum = 0;
-    foreach ($player->evaluations as $rating){
-        $sum += $rating->score_text_id;
-    }
-    return view('players.player', compact('player', 'position', 'scoreTexts', 'activities', 'sum'));
+    return view('players.player', compact('player', 'position', 'scoreTexts', 'activities'));
 });
 
 Route::get('/about-us', 'PagesController@about'); // about page

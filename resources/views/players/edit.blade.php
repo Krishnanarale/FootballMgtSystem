@@ -188,6 +188,17 @@
                                 @endforeach
                             </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="summary">Summary:</label>
+                                <textarea type="text" class="form-control @error('summary') is-invalid @enderror" id="summary" name="summary">{{ old('summary') ?? $player->summary }}</textarea>
+                                @error('summary')
+                                <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                                @enderror
+                            </div>
+                        </div>
 {{--                        <div class="col-md-3">--}}
 {{--                            <label for="document_one">Document 1:</label>--}}
 {{--                            <input type="file" class="form-control @error('document_one') is-invalid @enderror" id="document_one"--}}
@@ -377,7 +388,7 @@
                                             @endif
                                             <tr>
                                                 <td><strong class="text-primary">Rating Average</strong></td>
-                                                <td><strong class="text-primary">{{ number_format($sum/45, 1) }} / 5</strong></td>
+                                                <td><strong class="text-primary">{{ number_format($player->avgRating, 1) }} / 5</strong></td>
                                             </tr>
                                             </tbody>
                                         </table>

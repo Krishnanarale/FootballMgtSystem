@@ -23,10 +23,9 @@
             color: #fff !important;
         }
         section.about-us-section {
-            background: url(/frontTheam/img/aboutUs-bk.jpg) no-repeat;
             width: 100%;
             background-size: cover;
-            background-position: center;
+            background: url(/frontTheam/img/aboutUs-bk.jpg) no-repeat center;
         }
         .about-us-section-BK-color {
             background: #36353391;
@@ -107,35 +106,6 @@
     <section class="about-us-section bg-light text-center">
         <div class="about-us-section-BK-color">
             <div class="container">
-                <!-- <div class="row">
-                    <div class="col-lg-4">
-                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                            <div class="features-icons-icon d-flex">
-                                <i class="icon-screen-desktop m-auto text-primary"></i>
-                            </div>
-                            <h3>Fully Responsive</h3>
-                            <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                            <div class="features-icons-icon d-flex">
-                                <i class="icon-layers m-auto text-primary"></i>
-                            </div>
-                            <h3>Bootstrap 4 Ready</h3>
-                            <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-                            <div class="features-icons-icon d-flex">
-                                <i class="icon-check m-auto text-primary"></i>
-                            </div>
-                            <h3>Easy to Use</h3>
-                            <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="row">
                     <div class="col-sm-12 Habout-content">
                         <h4>About Club</h4>
@@ -166,14 +136,6 @@
                     <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
                 </div>
             </div>
-
-            <!-- <div class="row no-gutters">
-                <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('frontTheam/img/football3.jpg');"></div>
-                <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                    <h2>Easy to Use &amp; Customize</h2>
-                    <p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand some deeper customization options. Out of the box, just add your content and images, and your new landing page will be ready to go!</p>
-                </div>
-            </div> -->
         </div>
     </section>
 
@@ -187,42 +149,26 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-4">
-                    <a href="#">
-                        <div class="card">
-                            <div class="card-img-box">
-                                <img class="d-block" src="{{ asset('/frontTheam/img/Defenders1.jpg')}}" alt="pataaki">
+                @forelse($players as $player)
+                    <div class="col-sm-4">
+                        <a href="/players/{{ $player->id }}/show">
+                            <div class="card">
+                                <div class="card-img-box">
+                                    <img class="d-block" src="{{ ($player->avatar != '' ) ? '/storage/'. $player->avatar : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/768px-User_icon_2.svg.png' }}" alt="{{ $player->user->first_name }} {{ $player->user->last_name }}">
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">{{ $player->user->first_name }} {{ $player->user->last_name }}</p>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <p class="card-text">Player Name 1</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-4">
-                    <a href="#">
-                        <div class="card">
-                            <div class="card-img-box">
-                                <img class="d-block" src="{{ asset('/frontTheam/img/Defenders2.jpg')}}" alt="pataaki">
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">Player Name 2</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-4">
-                    <a href="#">
-                        <div class="card">
-                            <div class="card-img-box">
-                                <img class="d-block" src="{{ asset('/frontTheam/img/Defenders3.jpg')}}" alt="pataaki">
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">Player Name 3</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                @empty
+                    <div class="col-sm-12">
+                    <div class="alert alert-warning text-center">
+                        <strong>Ohhh!</strong> No player available.
+                    </div>
+                    </div>
+                @endforelse
             </div>
         </div>
     </section>
@@ -273,26 +219,26 @@
     </section>
 
     <!-- Call to Action -->
-{{--    <section class="call-to-action text-white text-center">--}}
-{{--        <div class="overlay"></div>--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-xl-9 mx-auto">--}}
-{{--                    <h2 class="mb-4">Ready to get started? Sign up now!</h2>--}}
-{{--                </div>--}}
-{{--                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">--}}
-{{--                    <form>--}}
-{{--                        <div class="form-row">--}}
-{{--                            <div class="col-12 col-md-9 mb-2 mb-md-0">--}}
-{{--                                <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">--}}
-{{--                            </div>--}}
-{{--                            <div class="col-12 col-md-3">--}}
-{{--                                <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </form>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+    <section class="call-to-action text-white text-center">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <h2 class="mb-4">Ready to get started? Sign up now!</h2>
+                </div>
+                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                    <form>
+                        <div class="form-row">
+                            <div class="col-12 col-md-9 mb-2 mb-md-0">
+                                <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection
