@@ -24,21 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1e5c7f36-cc12-4d99-b07d-46d890c00f1f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/EvaluationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/EvaluationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PlayersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PlayersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Players/ComparePlayerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Players/ComparePlayerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Players/PlayersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Players/PlayersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_25_041049_create_players_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_25_041049_create_players_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/frontTheam/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/frontTheam/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/players/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/players/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/front/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/front.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/front.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/players/compare/compare.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/compare/compare.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/players/compare/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/compare/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/players/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/players/player.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/player.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/players/players-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/players/players-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,6 +237,7 @@
       <workItem from="1607845842168" duration="2724000" />
       <workItem from="1607946801970" duration="15000" />
       <workItem from="1608010757499" duration="585000" />
+      <workItem from="1609081464487" duration="552000" />
     </task>
     <servers />
   </component>

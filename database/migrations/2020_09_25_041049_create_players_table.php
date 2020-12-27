@@ -40,7 +40,7 @@ class CreatePlayersTable extends Migration
             $table->string('received_by_squad')->nullable();
             $table->string('received_by_id')->nullable();
             $table->string('received_by_register_number')->nullable();
-            $table->string('received_by_remark')->nullable();
+            $table->text('received_by_remark')->nullable();
             $table->timestamps();
 
             $table->index('user_id');
